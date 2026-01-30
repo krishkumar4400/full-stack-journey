@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: white;
+}
+
+/* 
+  topics:
+    1. position - absolute, relative, fixed, sticky
+    2. top bottom left right 
+    3. transform properties - translate (x and y), rotate, scale, skew
+    4. hover, transition
+
+    [optional] making a webpage with these
+*/
+
+
+/* absolute */
+/* #car1 {
+  height: 200px;
+  width: 300px;
+  background-color: blue;
+}
+
+#car2 {
+  position: absolute;
+  left: 50%;
+  height: 250px;
+  width: 350px;
+  background-color: red;
+}
+
+#car3 {
+  bottom: 10%; /* it doesn't work because position not given
+  height: 300px;
+  width: 400px;
+  background-color: green;
+} */
+
+/* #car1 {
+  height: 200px;
+  width: 300px;
+  background-color: blue;
+
+  position: absolute;
+  top: 20px;
+  left: 30%;
+} */
+
+/* .container {
+  width: 400px;
+  height: 400px;
+  background: black;
+  margin: 40px;
+}
+
+.container .car4 {
+  width: 100px;
+  height: 100px;
+  background: yellow;
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
+
+/* relative */
+/* .container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background: black;
+  margin: 40px;
+}
+
+.container .car4 {
+  width: 100px;
+  height: 100px;
+  background: yellow;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+} */
+
+#box {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  background: red;
+}
+#innerBox {
+  /* position: relative; */
+  width: 400px;
+  height: 400px;
+  background: blue;
+}
+#microInnerBox {
+  /* position: relative; */
+  width: 300px;
+  height: 300px;
+  background: yellow;
+}
+#actualBox {
+  position: absolute;
+  left: 75%;
+  width: 50px;
+  height: 50px;
+  background: green;
+}
+
+/* fixed */
+#homePage {
+  width: 100%;
+  height: 1000px;
+  background-color: darkgreen;
+}
+
+#sideBar {
+  height: 300px;
+  width: 100px;
+  background-color: white;
+  position: fixed;
+  top: 20%;
+  right: 10%;
+}
+
+/* sticky */
+.parent {
+  width: 100%;
+  background-color: aliceblue;
+  /* height: 10px; */
+}
+
+.parent > .child {
+  width: 100%;
+  height: 2000px;
+  background-color: #222;
+}
+.parent > .child2 {
+  width: 100%;
+  height: 2000px;
+  background-color: #333;
+}
+
+#sticky {
+  position: sticky;
+  top: 100px;
+  height: 100px;
+  width: 200px;
+  background: rebeccapurple;
+}
+
+h1 {
+  font-size: small;
+}
+
+/* parent - relative and child - absolute  =  relative to box */
+
+
+/* 
+jo bhi element absolute hota hai vo uth jata hai and agar tumne us element to move 
+kiya to wo kissi ke upar bhi aa sakta hai
+
+koi bhi element jispe position nahi hai uspar top left bottom right and z-index naam ki property kaam nahi karti
+
+koi bhi element par absolute lagane se wo upar uth jata hai, uski space khaali hoti hai and 
+uski jagah bad wala element aa jata hai
+
+top left bottom right and z index ye sirf kaam karti hai jab aapka element ke 
+paas koi position ki value ho jaise ki -
+    sticky, fixed, absolute, relative
+
+    *** sticky
+    agaar apka ek div hai jiske andar ek aur element hai jo sticky
+     hai to wo element scroll karte karte upar chipak jaayega and tab
+      tak wahi rahega jab tak aapka poora parent scroll nahi ho jata 
+
+      stiicky is relative to the parent
+*/

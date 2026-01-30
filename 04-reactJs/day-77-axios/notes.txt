@@ -1,0 +1,9 @@
+api : 
+
+mainly data comes from backend in 2 forms 
+    1. SSR - comes html show as frontend- called server side rendering
+    2. CSR - data comes in other format like json data which we process and show in frontend - called client side rendering
+
+
+
+server/backend - server is basically a computer that connected to the network via internet or cables or routers and programmed as like that can accept the client request and serve the request or can response to client (client may be frontend or gui that interacts with user)

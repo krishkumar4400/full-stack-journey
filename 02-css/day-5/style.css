@@ -1,0 +1,146 @@
+@font-face {
+    font-family: f1;
+    src: url(./fonts/sf-pro-text_regular.woff2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  webkit-user-select: none;
+  font-family: f1;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+/* display flex used to make perfect layout */
+#parent {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+
+  /* handling elements column wise  */
+  /* align-items: flex-start; */
+  /* align-items: flex-end; */
+  align-items: center;
+
+  /* handling elements row wise  */
+  /* justify-content: flex-start; */
+  /* justify-content: flex-end; */
+  /* justify-content: center; */
+  /* justify-content: around; */
+  /* justify-content: evenly; */
+}
+
+#parent > #box1 {
+  height: 200px;
+  width: 200px;
+  background-color: crimson;
+}
+#parent > #box2 {
+  height: 200px;
+  width: 200px;
+  background-color: blue;
+}
+#parent > #box3 {
+  height: 200px;
+  width: 200px;
+  background-color: green;
+}
+#parent > #box4 {
+  height: 200px;
+  width: 200px;
+  background-color: yellow;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px 50px;
+  background-color: #151515;
+}
+
+nav p {
+  color: white;
+  font-weight: light;
+}
+
+i {
+  color: white;
+  font-size: 1.2rem;
+}
+#logo {
+  font-size: 2rem;
+}
+
+#main > h1 {
+  color: white;
+  text-align: center;
+  font-size: 3.5rem;
+  margin: 5px 0;
+  margin-top: 42px;
+}
+#main > p {
+  color: rgb(174, 174, 174);
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+#main > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 15px;
+  margin-top: 25px;
+}
+#main > div > button {
+  padding: 12px 25px;
+  border: 0;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+    font-weight: 400;
+  font-size: 14px;
+  cursor: pointer;
+}
+#main > div > #learnMore {
+  background-color: rgb(32, 84, 241);
+  color: white;
+}
+#main > div > #buy {
+  color: rgb(124, 157, 255);
+  border: 1px solid rgb(124, 157, 255);
+  background: transparent;
+}
+#main > div > #buy:hover{
+  color: white;
+  background-color: rgb(104, 141, 255);
+  border: 1px solid rgb(112, 148, 255);
+}
+
+.hero > img {
+    width: 100%;
+}
+
+.sec {
+    width: 100%;
+    
+}
+
+/* google - remixicon */

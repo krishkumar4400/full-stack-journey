@@ -1,0 +1,132 @@
+* Difference between let, var and const 
+
+| Feature        | `var`                              | `let`                 | `const`               |
+| -------------- | ---------------------------------- | --------------------- | --------------------- |
+| Scope          | Function scope                     | Block scope           | Block scope           |
+| Hoisting       | Hoisted (initialized as undefined) | Hoisted (but TDZ)     | Hoisted (but TDZ)     |
+| Re-declaration | Allowed                            | ❌ Not allowed         | ❌ Not allowed         |
+| Re-assignment  | Allowed                            | Allowed               | ❌ Not allowed         |
+| Use case       | Older JS, not recommended          | Variables that change | Constants, references |
+
+⭐ 2. Scope Difference
+    🔹 var → Function Scope
+    if (true) {
+    var x = 10;
+}
+console.log(x);   // 10  (var escapes block)
+
+🔹 let & const → Block Scope
+if (true) {
+    let a = 20;
+    const b = 30;
+}
+console.log(a);  // ❌ Error
+console.log(b);  // ❌ Error
+
+⭐ 3. Hoisting Difference
+
+All three are hoisted — BUT behave differently.
+
+🔹 var hoisting
+console.log(x); // undefined
+var x = 10;
+
+
+✔ Hoisted
+✔ Initialized as undefined
+
+🔹 let & const hoisting (TDZ)
+console.log(y); // ❌ ReferenceError (TDZ)
+let y = 20;
+
+TDZ = Temporal Dead Zone
+
+Variable is hoisted but not accessible before initialization.
+
+⭐ 4. Re-declaration & Re-assignment
+🔹 var
+var x = 10;
+var x = 20; // allowed
+
+🔹 let
+let y = 10;
+let y = 20; // ❌ Error
+y = 20;     // ✔ allowed
+
+🔹 const
+const z = 10;
+z = 20;      // ❌ Error
+
+⭐ 5. const does NOT make the value immutable
+
+Objects and arrays inside const can still be modified:
+
+const obj = { name: "Krish" };
+obj.name = "Amit";   // ✔ allowed
+
+
+Only reassignment is blocked:
+
+obj = {}; // ❌ Error
+
+⭐ 6. Global Scope Difference (Important)
+
+var creates a property on the global object (window/globalThis).
+
+var x = 10;
+console.log(window.x); // 10
+
+
+let and const do NOT:
+
+let y = 20;
+console.log(window.y); // undefined
+
+⭐ 7. Memory & Behavior Differences (Advanced, Interview-Worthy)
+🔹 var
+
+Hoisted + initialized to undefined
+
+Function scoped → leaks outside blocks
+
+Can be redeclared
+
+Attaches to global object
+
+🔹 let
+
+Hoisted but kept in TDZ until initialization
+
+Block scoped
+
+Cannot redeclare in same scope
+
+🔹 const
+
+Same as let except:
+
+Must be initialized
+
+Cannot be reassigned
+
+⭐ 8. Example to Understand Everything at Once
+function test() {
+    console.log(a); // undefined
+    // console.log(b); // ❌ Error (TDZ)
+    // console.log(c); // ❌ Error (TDZ)
+
+    var a = 1;
+    let b = 2;
+    const c = 3;
+
+    if (true) {
+        var a = 10;  // overwrites outer var
+        let b = 20;  // new block variable
+        const c = 30; // new block constant
+    }
+
+    console.log(a); // 10
+    console.log(b); // 2
+    console.log(c); // 3
+}
+test();

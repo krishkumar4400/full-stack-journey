@@ -1,0 +1,17 @@
+| Type                     | Purpose                       | Examples                | Works On          | Output              |
+| ------------------------ | ----------------------------- | ----------------------- | ----------------- | ------------------- |
+| **Programming Language** | Build full applications       | C, C++, Java, Python    | System & software | Executable programs |
+| **Scripting Language**   | Automate or add interactivity | JavaScript, Python, PHP | Apps, browsers    | Automated tasks     |
+| **Markup Language**      | Structure content             | HTML, XML               | Web pages         | Organized data      |
+| **Styling Language**     | Design and presentation       | CSS                     | Web pages         | Styled layout       |
+
+💡 In Simple Words:
+
+Programming → Teaches computer what to do 🧠
+
+Scripting → Tells computer how to do it quickly ⚙️
+
+Markup → Says what to show 🧾
+
+Styling → Says how it should look 🎨
+

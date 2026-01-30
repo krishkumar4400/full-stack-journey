@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+/* h1 {
+  color: blue;
+} */
+
+/* backgroung coloring - gradient */
+#box1 {
+  height: 200px;
+  width: 200px;
+  background-color: lightsalmon;
+}
+
+#box2 {
+  height: 200px;
+  width: 200px;
+  background: linear-gradient(red, blue);
+}
+
+.box {
+  height: 300px;
+  width: 300px;
+  /* background: linear-gradient(orange, white, green); */
+  /* background:linear-gradient(to right, red, blue, purple, yellow); */
+  /* background:linear-gradient(to left, red, blue, purple, yellow); */
+  /* background:linear-gradient(to bottom, red, blue, purple, yellow); */
+  /* background:linear-gradient(to top, red, blue, purple, yellow); */
+  /* background: linear-gradient(to right bottom, red, green); */
+  background: linear-gradient(to right bottom, red 90%, green);
+}
+
+#box3 {
+  height: 300px;
+  width: 300px;
+  background: radial-gradient(yellow 40%, red, black);
+}
+#box4 {
+  height: 300px;
+  width: 300px;
+  background: conic-gradient(cyan, coral);
+}
+#box4 {
+  height: 300px;
+  width: 300px;
+  background: conic-gradient(
+    violet,
+    indigo,
+    blue,
+    green,
+    yellow,
+    orange,
+    red,
+    violet
+  );
+}
+
+/* nesting */
+#outer {
+  width: 500px;
+  height: 300px;
+  background-color: green;
+}
+
+#outer #inner {
+  width: 50%;
+  height: 50%;
+  background-color: chocolate;
+}
+
+/*  % handling */
+/* #main {
+    height: 40%;
+    width: 40%;
+    background-color: darkmagenta;
+} */
+/* #main {
+    height: 100%;
+    width: 100%;
+    background: conic-gradient(red, blue, red, blue, red);
+} */
+
+/* #main {
+    height: 100%;
+    width: 100%;
+    background: conic-gradient(red, blue, red, blue, red);
+} */
+
+/* copy image address */
+#main {
+  height: 100%;
+  width: 100%;
+  background-image: url(https://plus.unsplash.com/premium_photo-1737707981271-87d1000aef10?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8M2QlMjBjYXJzfGVufDB8fDB8fHww);
+  /* background-repeat: no-repeat;
+    background-position: center; */
+
+  background-size: cover; /* width wise cover*/
+  background-position: center; /* centers the image other - top, bottom*/
+}
+
+#main2 {
+  width: 100%;
+  height: 100%;
+  background-image: url(https://images.unsplash.com/photo-1707158104704-f541e58b20a4?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: contain; /* cover height wise*/
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* margin padding 
+
+    margin - imaginary space outside the container \\ space outside the container or space around
+    padding - imaginary space inside the container \\ space inside the container
+    */
+#box7 {
+  height: 300px;
+  width: 300px;
+  background-color: chartreuse;
+  margin-left: 50px;
+  margin-top: 100px;
+  margin: 300px;
+  padding: 30px;
+}
+
+#box7 h2 {
+  color: blue;
+  font-size: 2.3rem;
+}
+
+/* we can give negative margin but not padding can be negative it will not work */
+#box8 {
+  height: 300px;
+  width: 300px;
+  background-color: darkorchid;
+  margin: -50px;
+}
+
+#box8 h2 {
+  color: blue;
+  font-size: 2.3rem;
+}
+
+/* button {
+    margin: 200px;
+    padding: 10px 20px;
+    color: white;
+    background: blue;
+    border: 0;
+    border-radius: 5px;
+} */
+
+.box8 {
+  height: 100px;
+  width: 100px;
+  background-color: crimson;
+  border: 2px solid white;
+  border: none;
+  border-radius: 20px;
+  border-radius: 50%;
+}
+
+/* building a page */
+
+@font-face {
+  font-family: f1;
+  src: url(./Beautiful.otf);
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+  background-image: url(https://plus.unsplash.com/premium_photo-1737525741427-dc515f79a575?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 100px;
+}
+
+#container div h1 {
+  color: white;
+  font-size: 80px;
+  font-weight: 100;
+  font-family: f1;
+}
+#container div button {
+  padding: 20px 40px;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+  background-color: transparent;
+  border: 1px solid gray;
+  cursor: pointer;
+  border-radius: 5px;
+}

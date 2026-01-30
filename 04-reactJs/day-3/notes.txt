@@ -1,0 +1,25 @@
+personality:
+    team working
+    startup
+    big package
+    good company
+    complete personality
+        presure handling
+        do know work
+        can do work 
+        kaisa insaan
+        leadership
+        team manage
+        team work 
+        lot of factors
+        communication
+
+knowldege
+skills
+communication 
+network and connections
+
+
+js
+
+jsx - js + html (js extensible)
