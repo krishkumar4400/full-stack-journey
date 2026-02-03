@@ -1,0 +1,65 @@
+
+/* google - Bento grid */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 70px 1fr 0.5fr 0.5fr;
+  grid-template-areas:
+    "header header header"
+    "section section section"
+    "div1 div2 div4"
+    "div1 div3 div4";
+  grid-gap: 10px;
+  padding: 20px;
+}
+
+header {
+  background-color: brown;
+  grid-area: header;
+}
+
+section {
+  background-color: darkgreen;
+  grid-area: section;
+}
+
+#div1 {
+  background-color: rgb(44, 33, 22);
+  grid-area: div1;
+}
+#div2 {
+  background-color: chocolate;
+  grid-area: div2;
+}
+#div3 {
+  background-color: chocolate;
+  grid-area: div3;
+}
+
+#div4 {
+  background-color: rgb(0, 37, 63);
+  grid-area: div4;
+}
+
+header,
+section,
+div {
+  border: 3px solid white;
+}
