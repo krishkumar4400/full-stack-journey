@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <!-- applying flex to all the childs through parents in one go -->
+    <ul class="flex bg-black m-0 p-0 [&>*]:flex">
+        <li class="p-3">
+            <a class="text-white hover:border-b" href="#">Home</a>
+        </li>
+        <li class="p-3">
+            <a class="text-white hover:border-b" href="#">About</a>
+        </li>
+        <li class="p-3">
+            <a class="text-white hover:border-b" href="#">Contact</a>
+        </li>
+        <li class="p-3">
+            <a class="text-white hover:border-b" href="#">Help</a>
+        </li>
+    </ul>
+</body>
+</html>

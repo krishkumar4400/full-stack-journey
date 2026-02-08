@@ -1,0 +1,40 @@
+<!-- 
+Margin padding
+    - How to apply margin and padding on all sides
+    - How to apply margin and padding on vertical and horizontal side
+    - How to apply margin and padding on single side
+    - Apply margin and padding on span
+    
+1. How to apply 1px margin and padding
+2. margin and padding different in tailwind 3 and 4 version
+        the range of margin and padding in version 3 was between the range 0 to 96 but version 4 is dynamic we can use any value for the margin and padding in class.
+
+- 0.25rem = 4px
+- 1rem = 16px
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body class="bg-black">
+    <h1 class="text-red-700 text-4xl text-center bg-indigo-200 m-10 p-10">Hello world1</h1>
+    <h1 class="text-red-400 text-4xl bg-indigo-500 mx-30 px-50">Hello world2</h1>
+    <h1 class="text-red-400 text-4xl bg-indigo-500 my-40 py-40">Hello world3</h1>
+    <h1 class="text-red-400 text-4xl bg-indigo-500 ml-30 pl-30">Hello world4</h1>
+    <h1 class="text-red-400 text-4xl bg-indigo-500 mr-30 pr-30">Hello world5</h1>
+    <h1 class="text-red-400 text-4xl bg-indigo-500 mt-30 pt-30 mb-3">Hello world6</h1>
+    <h1 class="text-red-400 text-4xl bg-indigo-500 mb-30 pb-30">Hello world7</h1>
+
+    <!-- applying margin padding to inline elements like span -->
+    <span class="border border-yellow-400 border-2 bg-slate-900  text-white ml-10 pl-20 mt-10 pt-20 rounded-xl block">span with margin and padding</span>
+
+    <!-- Applying 1px margin and padding -->
+     <div class="bg-cyan-300 p-[2px] m-[1px]">This is a div</div>
+</body>
+</html>

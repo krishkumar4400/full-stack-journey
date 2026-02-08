@@ -1,0 +1,46 @@
+<!-- 
+Background classes in Tailwind
+    - Add image in background
+    - Classes for background properties
+    - Add Gradient
+    - Add shadow
+    - Mix blending
+    
+1. Difference between BG container and cover css
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <div>
+        Hello Tailwind
+    </div>
+
+    <div class="bg-red-500 h-90 mb-10 bg-no-repeat bg-cover" style="background-image: url(monkey.jpg)">
+
+    </div>
+
+    <div class="bg-red-500 h-90 bg-[url(monkey.jpg)] bg-no-repeat bg-center bg-container">
+
+    </div>
+    <div class="bg-red-500 h-90 bg-[url(monkey.jpg)] bg-no-repeat bg-center bg-cover">
+
+    </div>
+
+    <!-- Gradient colors:  -->
+     <div class="size-60 gradient bg-gradient-to-b to-red-500 from-green-500"></div>
+     <div class="size-60 gradient bg-gradient-to-l to-blue-500 from-green-500"></div>
+     <div class="size-60 gradient bg-gradient-to-tr to-yellow-600 from-black"></div>
+
+     <!-- shadow -->
+      <div class="size-60 m-20 shadow-orange-400 shadow-2xl"></div>
+      <div class="size-60 m-30 shadow-inner shadow-pink-700"></div>
+</body>
+</html>

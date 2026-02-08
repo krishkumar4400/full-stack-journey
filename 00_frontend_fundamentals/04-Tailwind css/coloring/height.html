@@ -1,0 +1,39 @@
+<!-- 
+Height, Min-Height and Max-Height
+    - Apply Heght, min-height, max-height
+    - Full Screen height
+    - Height in percentage
+    - Provide specific Height
+    - Height and hover
+    
+1. What is viewport
+2. h-screen vs h-full
+        - Allows us to use height in percentage of parent to child
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <h1>Height</h1>
+    <div class="flex justify-around mt-4 h-screen">
+    <div class="w-15 bg-red-400 h-full">div-1</div>
+    <div class="w-15 bg-blue-400 max-h-100">div-2</div>
+    <div class="w-15 bg-yellow-400 h-50">div-3</div>
+    <div class="w-15 bg-yellow-400 h-50 min-h-70">div-3</div>
+    <div class="w-15 bg-green-400 h-1/2">div-4</div>
+    <div class="w-15 bg-green-400 h-1/3">div-4</div>
+    <div class="w-15 bg-green-400 h-1/4">div-4</div>
+    <div class="w-15 bg-cyan-400 h-30">div-30</div>
+</div>
+
+<!-- h-dvw(dynamic viewport width) -->
+ <div class="bg-orange-600 h-dvw"></div>
+ <div class="bg-orange-900 h-dvh"></div>
+</body>
+</html>

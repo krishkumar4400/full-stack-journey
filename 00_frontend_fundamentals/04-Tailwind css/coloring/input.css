@@ -1,0 +1,147 @@
+@import "tailwindcss";
+@tailwind base; /*change the defualt style of html element and make it a plane html element.*/
+@tailwind components; /* whenever we use components in our projects it injects classes in that or This injects tailwind's component classes and any component class registered by plugin.*/
+@tailwind utilities; /*used classes in projects are called utility classes*/
+
+@utility container {
+  margin: auto;
+}
+
+/* @layer base { */
+/* h1 {
+        font-size: 60px;
+        font-weight: bold;
+    }
+    p {
+        font-size: 20px;
+    }
+    button {
+        border: 2px solid black;
+        border-radius: 5px;
+        padding: 3px 8px;
+        background-color: #d3d3d3;
+        cursor: pointer;
+    }
+    h2 {
+        font-size: 50px;
+    }
+    h3 {
+        font-size: 40px;
+    }
+    h4 {
+        font-size: 30px;
+    }
+    h5 {
+        font-size: 20px;
+    }
+    h6 {
+        font-size: 10px;
+    } */
+
+/* Doing all the above same things using Tailwind css:  */
+/* } */
+
+/* @layer base {
+  h1 {
+    @apply text-7xl font-bold;
+  }
+  h2 {
+    @apply text-5xl;
+    @apply font-bold;
+  }
+  h3 {
+    @apply text-4xl font-bold;
+  }
+  h4 {
+    @apply text-3xl font-bold;
+  }
+  h5 {
+    @apply text-2xl font-bold;
+  }
+  h6 {
+    @apply text-xl font-bold;
+  } */
+/* button {
+            @apply border-2 rounded-full m-2 px-6 py-2 cursor-pointer bg-gray-200 text-md;
+        } */
+/* } */
+
+/* @layer components {
+  .btn {
+    @apply bg-blue-500 rounded-md border text-white px-6 py-2 hover:bg-blue-800;
+  }
+  .custom-head {
+    @apply bg-blue-800 text-white;
+  }
+} */
+
+/* Directly doing this but using this method in hover it doesn't affect anything so to apply hover also we have to write this code inside the component directive:  */
+/* .custom-head {
+        @apply bg-blue-800 text-white;
+    } */
+
+/* @theme {
+  --breakpoint-sm: 400px; default breakpoints
+  --breakpoint-md: 500px;
+  --breakpoint-lg: 600px;
+  --breakpoint-xl: 700px;
+  --breakpoint-big: 800px; extended (own) breakpoints
+  --breakpoint-ebig: 900px; extended (own) breakpoints
+
+  --padding-10: 200px; custom padding
+  --padding-c-70: 70px;
+  --padding-wrapper-20: 20px;
+  --margin-20: 20px;
+  --margin-c-100: 100px;
+
+  --height-2: 100px;
+
+  --width-2: 200px;
+
+  --size-100: 100px;
+  --size-custom-5: 50px;
+
+   darkmode: "dark"; 
+} */
+
+/* Making Bootstrap Like Buttons */
+@layer components {
+  .btn {
+    @apply rounded-md px-6 py-2 my-2 mx-1 font-serif font-stretch-200% cursor-pointer duration-500;
+  }
+
+  .btn-primary {
+    @apply bg-blue-500 text-white hover:bg-blue-800;
+  }
+
+  .btn-secondary {
+    @apply bg-yellow-500 text-black hover:bg-yellow-800;
+  }
+  .btn-success {
+    @apply bg-green-500 text-white hover:bg-green-800;
+  }
+  .btn-danger {
+    @apply bg-red-500 text-white hover:bg-red-800;
+  }
+  .btn-warning {
+    @apply bg-orange-500 text-white hover:bg-orange-800;
+  }
+  .btn-info {
+    @apply bg-cyan-500 text-white hover:bg-cyan-800;
+  }
+  .btn-basic {
+    @apply bg-fuchsia-500 text-white hover:bg-fuchsia-800;
+  }
+  .btn-dark {
+    @apply bg-slate-950 text-white hover:bg-black;
+  }
+  .btn-light {
+    @apply bg-gray-200 text-black hover:bg-gray-400;
+  }
+  .btn-other {
+    @apply bg-pink-500 text-white hover:bg-pink-800;
+  }
+  .btn-ok {
+    @apply bg-lime-500 text-white hover:bg-lime-800;
+  }
+}

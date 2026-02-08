@@ -1,0 +1,36 @@
+<!-- 
+Interactivity with Tailwind:
+    Interactivity: Means we perform an event on ui and ui response to us
+    - Apply style on hover
+    - Apply style on focus
+    - Apply style on Active
+    - understand group hover
+
+1. Difference between focus and active
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body class="p-10">
+    <button class="bg-blue-400 text-white py-2 px-3 rounded-md hover:bg-blue-700 hover:text-black hover:border cursor-pointer">Login</button>
+    <button class="bg-blue-400 text-white py-2 px-3 rounded-md focus:bg-green-700">Login</button>
+    <button class="bg-blue-400 text-white py-2 px-3 rounded-md active:bg-red-700">Login</button>
+
+    <button class="bg-blue-700 text-white px-3 py-2 rounded-md hover:bg-cyan-700 focus:bg-red-700 active:bg-green-700 cursor-pointer">Login</button>
+
+    <!-- Group Hover -->
+     <h1>Group Hover</h1>
+     <div>
+        <a class="group">
+            <h2 class="group-hover:text-white group-hover:bg-black border">This is a Heading</h2>
+            <p class="group-hover:text-white group-hover:bg-black">This is a paragraph</p>
+        </a>
+     </div>
+</body>
+</html>

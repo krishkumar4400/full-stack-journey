@@ -1,0 +1,73 @@
+<!-- 
+Filters with Images in Tailwind
+    - Blur classes with images and Text
+    - Apply Brightness classes to image
+    - Apply contrast
+    - Apply Invert
+    - Apply grayscale
+    - Apply Hue-rotate
+    
+1. How to disable filter in Tailwind css.
+2. Disable none vs visibility hidden.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <h1 class="blur-sm">Blur Image</h1>
+    <img class="blur"
+     src="monkey.jpg" alt="">
+    <img class="blur-sm"
+     src="monkey.jpg" alt="">
+    <img class="blur-lg"
+     src="monkey.jpg" alt="">
+    <img class="blur-xl"
+     src="monkey.jpg" alt="">
+    <img class="blur-md"
+     src="monkey.jpg" alt="">
+
+     <h1>Brightness on Images</h1>
+     <img src="monkey.jpg" class="" alt="">
+     <img src="monkey.jpg" class="brightness-50" alt="">
+     <img src="monkey.jpg" class="brightness-100" alt="">
+     <img src="monkey.jpg" class="brightness-125" alt="">
+     <img src="monkey.jpg" class="brightness-200" alt="">
+     <img src="monkey.jpg" class="brightness-150" alt="">
+     <img src="monkey.jpg" class="brightness-250" alt="">
+
+     <h1>contrast on images</h1>
+     <img src="monkey.jpg" class="contrast-0" alt="">
+     <img src="monkey.jpg" class="contrast-50" alt="">
+     <img src="monkey.jpg" class="contrast-100" alt="">
+     <img src="monkey.jpg" class="contrast-125" alt="">
+     <img src="monkey.jpg" class="contrast-150" alt="">
+
+     <h1>Grayscale</h1>
+     <img src="monkey.jpg" class="grayscale" alt="">
+
+     <h1>Invert</h1>
+     <img src="monkey.jpg" class="invert" alt="">
+
+     <h1>HUE</h1>
+     <img src="monkey.jpg" class="hue-rotate-15" alt="">
+     <img src="monkey.jpg" class="hue-rotate-50" alt="">
+     <img src="monkey.jpg" class="hue-rotate-60" alt="">
+     <img src="monkey.jpg" class="hue-rotate-90" alt="">
+     <img src="monkey.jpg" class="hue-rotate-170" alt="">
+</body>
+</html>
+
+<!-- to disable the filters in the tailwind.config.js file we put the code:
+    corePlugins: {
+        filter:false
+    }
+
+    Benefits: if won't include code of useless filter or it exludes extra css. Removes core plugin of filter 
+-->

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <p>welcome to my website</p>
+    <!-- inline event handling -->
+    <button onclick="console.log('Button Clicked');">Submit</button>
+    <button ondblclick="console.log('Button Clicked'); alert('button pressed')">Submit</button>
+    <div onmouseenter="console.log('Enter div')"></div>
+    <div onmouseover="console.log('over div')"></div>
+
+    <!-- event handling  using javascript-->
+
+    <button id="btn">click</button>
+    <button value="xxxx" id="btn2">click here</button>
+    <input type="text" placeholder="Enter Text">
+
+    <button onclick="console.log('Inline Handler');" id="btn4">Click Here</button>
+    <button id="mode">Change Mode</button>
+    <script src="script.js"></script>
+</body>
+</html>

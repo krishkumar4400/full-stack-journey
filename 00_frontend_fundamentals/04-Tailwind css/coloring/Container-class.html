@@ -1,0 +1,59 @@
+<!-- 
+Container class in Tailwind css
+    - What is container class
+        We can manage the width of our responsive website using container class.
+        content will be same visible using it in different devices.
+
+    - why we need it
+    - Example
+    
+1. Break points of container
+2. Difference between 'Boostrap container' and 'Tailwind container'.
+
+Container class is responsive in Nature it manages it's size on different screen size.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <!-- Added utility for extra features(check input.css File) -->
+    <!-- <div class="text-4xl bg-amber-500 container">
+        Container Class
+    </div> -->
+
+    <div class="bg-amber-800">
+        <ul class="flex justify-end [&>*]:p-4">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+            <li>
+                <a href="#">Services</a>
+            </li>
+            <li>
+                <a href="#">Help</a>
+            </li>
+        </ul>
+    </div>
+    <div class="text-7xl bg-amber-600 container">
+        container class
+    </div>
+    <div class="text-5xl bg-amber-400 container">
+        Header class
+    </div>
+    <div class="text-3xl bg-amber-200 container">
+        Main class
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!-- /* 
+Make Custom class in Tailwind CSS
+    - Why we need custom classes
+    - Use @layer directive with component identifier
+    - Define class and add style
+    - Use and test class with html
+
+
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <div class="m-10">
+        <button class="bg-blue-400 rounded px-6 py-2 text-white hover:bg-blue-700">Submit</button>
+    <!-- Whenever we want to make same component then we have to write same classess for each element to overcome this problem we will use custom classes and write a piece of code in input.css file: -->
+    </div>
+
+        <div class="m-10">
+        <button class="btn">Submit</button>
+    </div>
+        <div class="m-10">
+        <button class="btn">Submit</button>
+    </div>
+        <div class="m-10">
+        <button class="btn">Submit</button>
+    </div>
+        <div class="m-10">
+        <button class="btn">Submit</button>
+    </div>
+        <div class="m-10">
+        <button class="btn">Submit</button>
+    </div>
+
+    <!-- <h1 class="custom-head">This is a custom head</h1> -->
+    <h1 class="hover:custom-head">This is a custom head2</h1>
+</body>
+</html> 

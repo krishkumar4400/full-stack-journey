@@ -1,0 +1,50 @@
+<!-- 
+Dark Mode with button 
+    - start with last part code
+    - change config for dark mode
+    - Add button
+    - Change mode on button
+    - Test dark mode with button click.
+-->
+
+<!DOCTYPE html>
+<html lang="en"  id="root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+    <script>
+// function changeMode() {
+//     document.getElementById('root').classList.toggle('dark');
+// }
+function changeMode() {
+    const root = document.getElementById('root');
+    root.classList.toggle('dark');
+    localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+}
+
+// Apply on page load
+window.onload = () => {
+    if (localStorage.getItem('theme') === 'dark') {
+        document.getElementById('root').classList.add('dark');
+    }
+};
+
+    </script>
+</head>
+<body>
+    <button class="border border-slate-600 rounded m-10 px-3 py-2 cursor-pointer hover:bg-gray-400 transition duration-500"
+    onclick="changeMode()"
+    >Change Mode</button>
+    <div>
+        <h1 class="text-7xl dark:bg-slate-900 dark:text-white">Dark mode Test with Tailwind CSS</h1>
+        <p class="text-3xl dark:text-white">Krish Kumar 4400</p>
+    </div>
+
+    <div class="flex m-20 border mt-22 border-slate-900 p-3 dark:bg-slate-800 dark:border-amber-400 dark:border-2">
+        <div class="bg-blue-200 size-15 dark:bg-slate-500"></div>
+        <p class="text-2xl ml-10 p-3 dark:text-white">Box with Dark Mode</p>
+    </div>
+</body>
+</html>

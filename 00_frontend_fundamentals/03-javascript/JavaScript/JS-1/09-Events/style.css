@@ -1,0 +1,15 @@
+div{
+    width: 200px;
+    height: 200px;
+    background-color: gray;
+    cursor: pointer;
+}
+
+.dark {
+    background-color: black;
+    color: white;
+}
+.light {
+    background-color: white;
+    color: black;
+}

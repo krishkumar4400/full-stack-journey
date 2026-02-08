@@ -1,0 +1,43 @@
+<!-- 
+Positions in Tailwind:
+    - How to Apply Posotions
+    - Apply Top, Right, Left, Bottom with positions
+    - Apply inset with position
+
+1. use of inset
+2. What is the box model in CSS
+3. what is positions in css
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <h1>Posotions in Tailwind</h1>
+    <!-- <div class="bg-red-400 size-50 absolute top-0 left-0"></div>
+    <div class="bg-blue-400 size-50 absolute top-0 right-0"></div>
+    <div class="bg-yellow-400 size-50 absolute bottom-0 left-0"></div>
+    <div class="bg-green-400 size-50 absolute bottom-0 right-0"></div> -->
+
+    <div class="bg-indigo-200 size-100 relative">
+    <div class="bg-red-400 size-30 absolute top-0 left-0"></div>
+    <div class="bg-blue-400 size-30 absolute top-0 right-0"></div>
+    <div class="bg-yellow-400 size-30 absolute bottom-0 left-0"></div>
+    <div class="bg-green-400 size-30 absolute bottom-0 right-0"></div>
+    </div>
+
+    <div class="bg-blue-500 size-100">
+        <h2 class="bg-blue-950 fixed z-1">This is a heading to be Fixed</h2>
+    </div>
+
+    <div class="bg-green-200 size-100 relative">
+        <div class="bg-slate-950 size-40 absolute inset-10"></div>
+    </div>
+
+</body>
+</html>
