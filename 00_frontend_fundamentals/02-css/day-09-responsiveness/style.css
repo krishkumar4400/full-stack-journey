@@ -1,0 +1,146 @@
+/* 
+Units:
+    1. px(pixels) - fixed - depends device to device
+    2. %(percent) - depends on parent 
+    3. vw(viewport width) - depends on viewport's width
+    4. vh(viewport height) - depends on viewport's height
+    5. vmax(viewport maximum) - depends on maximum viewport
+    6. vmin(viewport minimum) - depends on minimum viewport
+    7. em - according to the parent and can be controlled by parent
+    8. rem - accroding to the root(html) and can be controlled by root
+
+*/
+
+/*
+
+1. dribble.com
+2. awwards.com
+3. bentogrids.com
+4. pinterest.com
+
+webpage for project - google:
+
+
+job - job oppurchunity discord -> apply , resume submit -> technical task or technical interview or coding interview -> task -> interview -> select.
+
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+/* px and % */
+#parent {
+  width: 500px;
+  height: 100px;
+  background: crimson;
+}
+
+#inner {
+  height: 50%;
+  width: 50%;
+  background: lightseagreen;
+}
+
+/* vw and vh */
+#box {
+  width: 40vw;
+  height: 40vw;
+  background-color: brown;
+
+  width: 40vh;
+  height: 40vh;
+}
+
+h2 {
+  font-size: 10vh;
+}
+
+/* vmax - width max h to width nahi to height par depend karega */
+h2 {
+  font-size: 10vmax;
+}
+
+#box {
+  width: 10vmax;
+  height: 10vmax;
+  background-color: green;
+}
+
+/* em */
+.parent {
+  background-color: darkslateblue;
+  margin: 20px;
+  padding: 10px;
+  width: 50%;
+
+  font-size: 20px;
+}
+
+/* bad approach */
+h1 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h6 {
+  font-size: 20px;
+}
+
+p {
+  font-size: 10px;
+}
+
+/* better approach using em */
+h1 {
+  font-size: 3em; /* 60px */
+}
+
+h3 {
+  font-size: 2em; /* 40px */
+}
+
+h6 {
+  font-size: 1em; /* 20px */
+}
+
+p {
+  font-size: 0.5em; /* 10px */
+}
+
+/* rem  1rem = 16px  depends on root*/
+h1 {
+  font-size: 3rem; /* 48px */
+}
+
+h3 {
+  font-size: 2rem; /* 32px */
+}
+
+h6 {
+  font-size: 1rem; /* 16px */
+}
+
+p {
+  font-size: 0.5rem; /* 8px */
+}
