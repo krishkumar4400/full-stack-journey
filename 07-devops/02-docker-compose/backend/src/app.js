@@ -23,5 +23,25 @@ app.get("/api/health", (req, res) => {
     timestamp: new Date(),
   });
 });
+app.get("/api/users", (req, res) => {
+  const users = [
+    {
+      id: 2,
+      name: "test user 2",
+      email: "test2@test.com",
+    },
+    {
+      id: 3,
+      name: "test user 3",
+      email: "test3@test.com",
+    },
+    {
+      id: 4,
+      name: "test user 4",
+      email: "test4@test.com",
+    },
+  ];
+  return res.status(200).json({ users });
+});
 
 export default app;
