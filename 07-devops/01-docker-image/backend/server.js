@@ -20,7 +20,7 @@ app.get("/api/data", (req, res) => {
 app.get("/api/health", (req, res) => {
   return res.status(200).json({
     status: "OK",
-    timestamp: Date.now(),
+    timestamp: new Date(),
   });
 });
 
