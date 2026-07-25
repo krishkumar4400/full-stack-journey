@@ -91,7 +91,7 @@ Bigger builds that pull everything above together, tracked in the table below.
 
 ## Repo structure
 
-```
+```text
 scratch-to-scale/
 ├── 00-foundations/
 ├── 01-frontend/
