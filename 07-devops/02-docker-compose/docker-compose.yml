@@ -2,9 +2,9 @@
 
 services:
   backend:
-    build: ./
+    build: ./backend
     ports:
       - "8000:4000"
     volumes:
-      - ./:/app
+      - ./backend:/app
     command: npx nodemon server.js

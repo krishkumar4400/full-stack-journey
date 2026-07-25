@@ -28,7 +28,6 @@ app.get("/api/users", (req, res) => {
     {
       id: 2,
       name: "test user 2",
-      email: "test2@test.com",
     },
     {
       id: 3,
