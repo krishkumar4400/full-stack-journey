@@ -2,9 +2,8 @@ import express from "express";
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello Express");
-});
+app.use(express.json());
+app.use(express.static("public"));
 
 app.get("/api/users", (req, res) => {
   const data = [
@@ -28,8 +27,12 @@ app.get("/api/users", (req, res) => {
 
   return res.status(200).json({
     success: true,
-    data
+    data,
   });
+});
+
+app.get("*name", (req, res) => {
+  return res.sendFile("public/index.html", {root: __dirname});
 });
 
 const port = process.env.PORT || 4000;
