@@ -95,6 +95,7 @@ body {
   height: 500px;
   background: red;
 }
+
 #innerBox {
   /* position: relative; */
   width: 400px;
@@ -171,7 +172,7 @@ kiya to wo kissi ke upar bhi aa sakta hai
 koi bhi element jispe position nahi hai uspar top left bottom right and z-index naam ki property kaam nahi karti
 
 koi bhi element par absolute lagane se wo upar uth jata hai, uski space khaali hoti hai and 
-uski jagah bad wala element aa jata hai
+uski jagah baad wala element aa jata hai
 
 top left bottom right and z index ye sirf kaam karti hai jab aapka element ke 
 paas koi position ki value ho jaise ki -
