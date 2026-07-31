@@ -1,17 +1,16 @@
-import {Routes, Route} from 'react-router-dom';
-import LandingPage from './pages/LandingPage.jsx';
-import LoginPage from './pages/LoginPage.jsx';
-
+import { RouterProvider } from "react-router-dom";
+import routes from "./routes.jsx";
+import "./style.scss";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path='/' element={<LandingPage />} />
-        <Route path='/login' element={<LoginPage />} />
-      </Routes>
-    </div>
-  )
-}
+    <>
+      {" "}
+      <RouterProvider router={routes} />
+      <Toaster />
+    </>
+  );
+};
 
-export default App
+export default App;
