@@ -20,6 +20,7 @@ async function registerUser(req, res) {
       return res.status(409).json({
         message: "User with this username or email id already exists",
         success: false,
+        user
       });
     }
 
@@ -110,6 +111,7 @@ async function loginUser(req, res) {
       .json({
         message: "User logged in successfully",
         success: true,
+        user
       });
   } catch (error) {
     console.error(error);
@@ -135,8 +137,33 @@ async function logoutUser(req, res) {
   }
 }
 
+async function getCurrentUser(req, res) {
+  try {
+    const userId = req.userId;
+    const user = await userModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+        success: false,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      user,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: error.message,
+      success: false,
+    });
+  }
+}
+
 module.exports = {
   registerUser,
   loginUser,
   logoutUser,
+  getCurrentUser,
 };

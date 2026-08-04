@@ -3,6 +3,7 @@ const {
   registerUser,
   loginUser,
   logoutUser,
+  getCurrentUser,
 } = require("../controllers/auth.controller.js");
 const {
   authenticationMiddleware,
@@ -33,5 +34,12 @@ authRouter.route("/login").post(loginUser);
 authRouter
   .route("/logout")
   .post(authenticationMiddleware, isAuthenticated, logoutUser);
+
+/**
+ * @route GET /api/v1/auth/user
+ * @desc Get the currently logged in user's infromation
+ * @access Private
+ */
+authRouter.route("/user").get(authenticationMiddleware, isAuthenticated, getCurrentUser);
 
 module.exports = authRouter;

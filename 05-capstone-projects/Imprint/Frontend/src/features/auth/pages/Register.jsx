@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../style/form.scss";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import toast from "react-hot-toast";
+import { register } from "../services/auth.api";
 
 const Register = () => {
   const [user, setUser] = useState({ username: "", email: "", password: "" });
@@ -11,17 +11,8 @@ const Register = () => {
     try {
       e.preventDefault();
       console.log(user);
-      const { data } = await axios.post(
-        "http://localhost:3000/api/v1/auth/register",
-        {
-          username: user.username,
-          email: user.email,
-          password: user.password,
-        },
-        {
-          withCredentials: true
-        }
-      );
+      const data = await register(user.username, user.email, user.password);
+
       if (data.success) {
         toast.success(data.message);
       } else {
@@ -42,7 +33,7 @@ const Register = () => {
         <form onSubmit={submitHandler}>
           <div>
             <input
-            required
+              required
               value={user.username}
               onChange={(e) => setUser({ ...user, username: e.target.value })}
               type="text"
@@ -52,7 +43,7 @@ const Register = () => {
           </div>
           <div>
             <input
-            required
+              required
               value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
               type="email"
@@ -62,7 +53,7 @@ const Register = () => {
           </div>
           <div>
             <input
-            required
+              required
               value={user.password}
               onChange={(e) => setUser({ ...user, password: e.target.value })}
               type="password"

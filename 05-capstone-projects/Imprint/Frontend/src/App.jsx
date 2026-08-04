@@ -2,12 +2,15 @@ import { RouterProvider } from "react-router-dom";
 import routes from "./routes.jsx";
 import "./style.scss";
 import { Toaster } from "react-hot-toast";
+import { AuthProvider } from "./features/auth/auth.provider.jsx";
 
 const App = () => {
   return (
     <>
       {" "}
-      <RouterProvider router={routes} />
+      <AuthProvider>
+        <RouterProvider router={routes} />
+      </AuthProvider>
       <Toaster />
     </>
   );
