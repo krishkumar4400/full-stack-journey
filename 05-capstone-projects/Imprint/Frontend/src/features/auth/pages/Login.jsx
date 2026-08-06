@@ -61,7 +61,7 @@ const Login = () => {
             />
           </div>
           <div>
-            <button>Login</button>
+            <button className="button primary-button">Login</button>
           </div>
           <div>
             <p>

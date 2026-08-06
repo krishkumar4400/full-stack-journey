@@ -1,0 +1,17 @@
+.button {
+  width: 100%;
+  padding: 6px 20px;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  background: transparent;
+  outline: none;
+  border-radius: 4px;
+  transition-duration: 0.1s;
+  font-weight: 600;
+
+  &.primary-button {
+    color: white;
+    background-color: rgb(40, 93, 237);
+  }
+}
+
