@@ -2,16 +2,32 @@ import { useState } from "react";
 import "../style/form.scss";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import { register } from "../services/auth.api";
+import { useAuth } from "../hooks/useAuth";
 
 const Register = () => {
-  const [user, setUser] = useState({ username: "", email: "", password: "" });
+  const [user, setUserData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const { loading, handleRegister, setUser, setLoading } = useAuth();
+
+  if (loading) {
+    return <h1>Loading ....</h1>;
+  }
 
   const submitHandler = async (e) => {
+    setLoading(true);
     try {
       e.preventDefault();
       console.log(user);
-      const data = await register(user.username, user.email, user.password);
+      const data = await handleRegister(
+        user.username,
+        user.email,
+        user.password,
+      );
+      setUser(data.user);
 
       if (data.success) {
         toast.success(data.message);
@@ -23,7 +39,8 @@ const Register = () => {
       console.error(error);
       toast.error(error.message);
     } finally {
-      setUser({ username: "", email: "", password: "" });
+      setUserData({ username: "", email: "", password: "" });
+      setLoading(false);
     }
   };
   return (
@@ -35,7 +52,9 @@ const Register = () => {
             <input
               required
               value={user.username}
-              onChange={(e) => setUser({ ...user, username: e.target.value })}
+              onChange={(e) =>
+                setUserData({ ...user, username: e.target.value })
+              }
               type="text"
               placeholder="Enter your username"
               name="username"
@@ -45,7 +64,7 @@ const Register = () => {
             <input
               required
               value={user.email}
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              onChange={(e) => setUserData({ ...user, email: e.target.value })}
               type="email"
               placeholder="Enter your email"
               name="email"
@@ -55,7 +74,9 @@ const Register = () => {
             <input
               required
               value={user.password}
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              onChange={(e) =>
+                setUserData({ ...user, password: e.target.value })
+              }
               type="password"
               placeholder="Enter your password"
               name="password"

@@ -4,6 +4,7 @@ const {
   getAllPosts,
   getPostById,
   getPostsByUserId,
+  getFeedPosts,
 } = require("../controllers/posts.controller.js");
 const {
   authenticationMiddleware,
@@ -15,6 +16,19 @@ const { likePost, unLikePost } = require("../controllers/posts.controller.js");
 const postRouter = express.Router();
 
 // protected routes
+
+/**
+ * @route GET /api/v1/posts/feed
+ * @description get posts for feed
+ * @access private
+ */
+postRouter.get(
+  "/feed",
+  authenticationMiddleware,
+  isAuthenticated,
+  getFeedPosts,
+);
+
 /**
  * @description Create post
  * @route POST /api/v1/posts/
@@ -88,5 +102,7 @@ postRouter.get(
   isAuthenticated,
   unLikePost,
 );
+
+
 
 module.exports = postRouter;

@@ -303,6 +303,36 @@ async function deleteComment(req, res) {
   }
 }
 
+async function getFeedPosts(req, res) {
+  try {
+    const userId = req.userId;
+    console.log(userId);
+    const posts = await Promise.all(
+      (await postModel.find().populate("userId").lean()).map(async (post) => {
+        const isLiked = await likesModel.findOne({
+          userId: userId,
+          postId: post._id,
+        });
+        // post.isLiked = Boolean(isLiked);
+        post.isLiked = !!isLiked;
+        return post;
+      }),
+    );
+    console.log(posts);
+    return res.status(200).json({
+      success: true,
+      posts,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: "Internal server error",
+      success: false,
+      error,
+    });
+  }
+}
+
 module.exports = {
   createPost,
   getAllPosts,
@@ -312,4 +342,5 @@ module.exports = {
   unLikePost,
   commentPost,
   deleteComment,
+  getFeedPosts,
 };

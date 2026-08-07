@@ -55,6 +55,7 @@ async function registerUser(req, res) {
       .json({
         message: "User registered successfully",
         success: true,
+        user
       });
   } catch (error) {
     console.error(error);
