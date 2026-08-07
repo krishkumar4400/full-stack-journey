@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import userModel from "../model/user.model.js";
 
 async function authenticationMiddleware(req, res, next) {
   const { token } = await req.cookies;
@@ -11,7 +12,15 @@ async function authenticationMiddleware(req, res, next) {
 
   try {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await userModel.findById(decodedToken.userId);
+    if (!user) {
+      return res.status(401).json({
+        message: "Unauthorized access",
+        success: false,
+      });
+    }
     req.userId = decodedToken.userId;
+    req.user = user;
     next();
   } catch (error) {
     return res.status(401).json({
@@ -22,7 +31,7 @@ async function authenticationMiddleware(req, res, next) {
 }
 
 function isAuthenticated(req, res, next) {
-  if (!req.userId) {
+  if (!req.userId || !req.user) {
     return res.status(401).json({
       message: "Unauthorized access",
       success: false,
@@ -30,3 +39,5 @@ function isAuthenticated(req, res, next) {
   }
   next();
 }
+
+export { authenticationMiddleware, isAuthenticated };

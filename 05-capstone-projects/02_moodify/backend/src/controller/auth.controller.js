@@ -1,6 +1,7 @@
 import userModel from "../model/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import blackListedTokenModel from "../model/blackListedToken.model.js";
 
 async function registerUser(req, res) {
   try {
@@ -82,4 +83,46 @@ async function loginUser(req, res) {
   }
 }
 
-export { registerUser, loginUser };
+async function logoutUser(req, res) {
+  try {
+    const { token } = req.cookies;
+    const blackListedToken = await blackListedTokenModel.create({ token });
+    return res.status(200).clearCookie("token").json({
+      message: "User logged out successfully",
+      success: true,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: error.message,
+      success: false,
+      error,
+    });
+  }
+}
+
+async function getUser(req, res) {
+  try {
+    const { token } = req.cookies;
+    const blackListedToken = await blackListedTokenModel.findOne({ token });
+    if (blackListedToken) {
+      return res.status(401).json({
+        message: "Unauthorized access",
+        success: false,
+      });
+    }
+    const user = req.user;
+    return res.status(200).json({
+      user,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: error.message,
+      success: false,
+      error,
+    });
+  }
+}
+
+export { registerUser, loginUser, logoutUser, getUser };
