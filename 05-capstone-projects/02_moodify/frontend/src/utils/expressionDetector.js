@@ -22,17 +22,17 @@ export function detectExpression(blendshapes) {
   }
 
   // 😮 Surprise
-  if (jawOpen > 0.55 && browUp > 0.45 && eyeWide > 0.45) {
+  if (jawOpen > 0.05 && browUp > 0.05 && eyeWide > 0.05) {
     return "😮 Surprise";
   }
 
   // 😠 Angry
-  if (browDown > 0.5 && mouthPress > 0.45) {
+  if (browDown > 0.05 && mouthPress > 0.05) {
     return "😠 Angry";
   }
 
   // 😢 Sad
-  if (mouthFrown > 0.45 && browUp > 0.3) {
+  if (mouthFrown > 0.01 && browUp > 0.01) {
     return "😢 Sad";
   }
 
