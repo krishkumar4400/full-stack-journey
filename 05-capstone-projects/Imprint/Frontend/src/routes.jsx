@@ -4,6 +4,7 @@ import Login from "./features/auth/pages/Login.jsx";
 import UploadAvatar from "./features/auth/pages/UploadAvatar.jsx";
 import Home from "./pages/Home.jsx";
 import Feed from "./features/posts/pages/Feed.jsx";
+import CreatePost from "./features/posts/pages/CreatePost.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const routes = createBrowserRouter([
   {
     path: "/upload-avatar",
     element: <UploadAvatar />,
+  },
+  {
+    path: "/create-post",
+    element: <CreatePost />,
   },
 ]);
 

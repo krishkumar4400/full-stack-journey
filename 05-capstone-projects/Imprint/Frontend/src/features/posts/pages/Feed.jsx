@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { usePost } from "../hooks/usePost.js";
+import Navbar from "../../shared/components/Navbar.jsx";
 
 const Feed = () => {
   const { feed, handleGetFeed, loading } = usePost();
@@ -14,6 +15,7 @@ const Feed = () => {
 
   return (
     <div>
+      <Navbar/>
       <div className="post-container">
         <div className="post">
           <div className="profile"></div>

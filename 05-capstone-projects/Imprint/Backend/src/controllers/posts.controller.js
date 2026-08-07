@@ -308,7 +308,9 @@ async function getFeedPosts(req, res) {
     const userId = req.userId;
     console.log(userId);
     const posts = await Promise.all(
-      (await postModel.find().populate("userId").lean()).map(async (post) => {
+      (
+        await postModel.find().sort({ createdAt: -1 }).populate("userId").lean()
+      ).map(async (post) => {
         const isLiked = await likesModel.findOne({
           userId: userId,
           postId: post._id,
