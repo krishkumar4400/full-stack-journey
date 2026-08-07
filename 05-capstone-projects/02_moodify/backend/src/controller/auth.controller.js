@@ -21,7 +21,7 @@ async function registerUser(req, res) {
     });
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: procrss.env.JWT_SECRET_EXPIRY,
+      expiresIn: process.env.JWT_SECRET_EXPIRY,
     });
 
     return res.status(201).cookie("token", token).json({
@@ -42,9 +42,11 @@ async function registerUser(req, res) {
 async function loginUser(req, res) {
   try {
     const { username, email, password } = req.body;
-    const user = await userModel.findOne({
-      $or: [{ email }, { username }],
-    });
+    const user = await userModel
+      .findOne({
+        $or: [{ email }, { username }],
+      })
+      .select("+password");
 
     if (!user) {
       return res.status(401).json({
@@ -62,11 +64,11 @@ async function loginUser(req, res) {
     }
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: procrss.env.JWT_SECRET_EXPIRY,
+      expiresIn: process.env.JWT_SECRET_EXPIRY,
     });
 
     return res.status(201).cookie("token", token).json({
-      message: "user logged successfully",
+      message: "user logged in successfully",
       success: true,
       user,
     });
