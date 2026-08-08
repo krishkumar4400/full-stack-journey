@@ -7,12 +7,10 @@ const api = axios.create({
 
 async function login( email, password ) {
   try {
-    console.log("before")
     const { data } = await api.post("/login", {
       email,
       password,
     });
-    console.log( "data : ", data);
     return data;
   } catch (error) {
     console.error(error);

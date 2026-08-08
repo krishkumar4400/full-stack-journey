@@ -124,4 +124,21 @@ async function getUser(req, res) {
   }
 }
 
-export { registerUser, loginUser, logoutUser, getUser };
+async function isAuth(req, res) {
+  try {
+    return res.status(200).json({
+      message: "User is authenticated",
+      success: true,
+      status: 200 
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: error.message,
+      success: false,
+      error,
+    });
+  }
+}
+
+export { registerUser, loginUser, logoutUser, getUser, isAuth };

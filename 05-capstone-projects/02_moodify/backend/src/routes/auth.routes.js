@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   getUser,
+  isAuth,
   loginUser,
   logoutUser,
   registerUser,
@@ -21,5 +22,6 @@ authRouter.post(
   logoutUser,
 );
 authRouter.get("/user", authenticationMiddleware, isAuthenticated, getUser);
+authRouter.get("/is-auth", authenticationMiddleware, isAuthenticated, isAuth);
 
 export default authRouter;
