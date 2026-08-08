@@ -2,6 +2,7 @@ import userModel from "../model/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import blackListedTokenModel from "../model/blackListedToken.model.js";
+import redis from "../config/redis.js";
 
 async function registerUser(req, res) {
   try {
@@ -86,7 +87,11 @@ async function loginUser(req, res) {
 async function logoutUser(req, res) {
   try {
     const { token } = req.cookies;
-    const blackListedToken = await blackListedTokenModel.create({ token });
+
+    // const blackListedToken = await blackListedTokenModel.create({ token });
+
+    await redis.set(token, Date.now().toString(), "EX", 60*6);
+
     return res.status(200).clearCookie("token").json({
       message: "User logged out successfully",
       success: true,
@@ -104,13 +109,7 @@ async function logoutUser(req, res) {
 async function getUser(req, res) {
   try {
     const { token } = req.cookies;
-    const blackListedToken = await blackListedTokenModel.findOne({ token });
-    if (blackListedToken) {
-      return res.status(401).json({
-        message: "Unauthorized access",
-        success: false,
-      });
-    }
+
     const user = req.user;
     return res.status(200).json({
       user,
