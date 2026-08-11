@@ -141,4 +141,19 @@ async function isAuth(req, res) {
   }
 }
 
+async function sendVerificationEmail(req,res) {
+  try {
+    const {email} = req.body;
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: error.message,
+      success: false,
+      error,
+    });
+  }
+}
+
+
+
 export { registerUser, loginUser, logoutUser, getUser, isAuth };

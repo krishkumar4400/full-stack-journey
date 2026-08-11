@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import authRouter from "./routes/auth.routes.js";
 import morgan from 'morgan';
+import songRouter from "./routes/song.route.js";
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.use(cors({
 
 // routes
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/songs", songRouter);
 
 export default app;
