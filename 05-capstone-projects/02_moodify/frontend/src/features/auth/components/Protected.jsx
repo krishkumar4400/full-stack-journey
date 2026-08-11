@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LearnMore = () => {
+const Protected = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const LearnMore = () => {
   )
 }
 
-export default LearnMore
+export default Protected
