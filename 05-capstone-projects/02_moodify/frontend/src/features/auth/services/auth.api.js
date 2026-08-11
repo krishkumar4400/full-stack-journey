@@ -18,6 +18,37 @@ async function loginUser(email, password) {
   }
 }
 
+async function registerUser(username, email, password) {
+  try {
+    const { data } = await api.post("/register", {
+      username,
+      email,
+      password,
+    });
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function logoutUser() {
+  try {
+    const { data } = await api.post("/logout");
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getUser() {
+  try {
+    const { data } = await api.get("user");
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function getAuthState() {
   try {
     const { data } = await api.get("/is-auth");
@@ -28,4 +59,4 @@ async function getAuthState() {
   }
 }
 
-export { loginUser, getAuthState };
+export { loginUser, registerUser, logoutUser, getUser, getAuthState };

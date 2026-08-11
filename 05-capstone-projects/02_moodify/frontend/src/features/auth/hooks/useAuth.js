@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../Auth.context.jsx";
-import { loginUser } from "../services/auth.api.js";
+import { loginUser, registerUser } from "../services/auth.api.js";
 import { useNavigate } from "react-router";
 
 export const useAuth = () => {
@@ -44,11 +44,76 @@ export const useAuth = () => {
     }
   };
 
-  const registerUser = (username, email, password) => {};
+  const handleLogout = async () => {
+    try {
+      setLoading(true);
+      const data = await logoutUser();
+      if (data?.success) {
+        setIsLoggedIn(false);
+        setUser(null);
+      } else {
+        setIsLoggedIn(false);
+        setUser(null);
+      }
+    } catch (error) {
+      console.error(error);
+      setIsLoggedIn(false);
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGetUser = () => {
+    try {
+      setLoading(true);
+      const data = await getUser();
+      if(data?.success) {
+        setUser(data.user);
+        setIsLoggedIn(true);
+      } else {
+        setUser(null);
+        setIsLoggedIn(false);
+      }
+    } catch (error) {
+      console.error(error);
+              setUser(null);
+        setIsLoggedIn(false);
+    } finally {
+      setIsLoggedIn(false);
+    }
+  }
+
+  const handleRegister = async (username, email, password) => {
+    try {
+      setLoading(true);
+      const data = await registerUser(username, email, password);
+      if(data?.success) {
+        setUser(data.user);
+        setIsLoggedIn(true);
+      } else {
+        setUser(null);
+        setIsLoggedIn(false);
+      }
+    } catch (error) {
+        setUser(null);
+        setIsLoggedIn(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    handleGetUser();
+  }, []);
+
 
   return {
     handleLogin,
     handleAuthState,
+    handleRegister,
+    handleGetUser,
+    handleLogout,
 
     loading,
     setLoading,
@@ -59,8 +124,7 @@ export const useAuth = () => {
     isLoggedIn,
     setIsLoggedIn,
 
-    registerUser,
-
     navigate,
   };
+
 };

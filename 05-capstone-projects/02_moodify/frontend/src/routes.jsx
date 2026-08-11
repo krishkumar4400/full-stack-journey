@@ -4,24 +4,24 @@ import Login from "./features/auth/pages/Login.jsx";
 import Register from "./features/auth/pages/Register.jsx";
 import Profile from "./pages/Profile.jsx";
 import { useAuth } from "./features/auth/hooks/useAuth.js";
-import ProtectedRoute from "./ProtectedRoute.jsx";
 import FaceExpression from "./features/expression/components/FaceExpression.jsx";
+import Protected from "./features/auth/components/Protected.jsx";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: (
-      <ProtectedRoute>
+      <Protected>
         <Home />
-      </ProtectedRoute>
+      </Protected>
     ),
   },
   {
     path: "/face",
     element: (
-      <ProtectedRoute>
+      <Protected>
         <FaceExpression />
-      </ProtectedRoute>
+      </Protected>
     ),
   },
   {

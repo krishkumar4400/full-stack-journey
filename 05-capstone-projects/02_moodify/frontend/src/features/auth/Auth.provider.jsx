@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import { AuthContext } from "./Auth.context.jsx";
 import { useNavigate } from "react-router";
 import { useAuth } from "./hooks/useAuth.js";
-import { getAuthState } from "./services/auth.api.js";
+import {
+  getAuthState,
+  getUser,
+  loginUser,
+  logoutUser,
+} from "./services/auth.api.js";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
