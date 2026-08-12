@@ -3,12 +3,18 @@ import { FilesetResolver, FaceLandmarker } from "@mediapipe/tasks-vision";
 
 import init from "../utils/utils.js";
 
-export default function FaceExpression() {
+export default function FaceExpression(onClick = () => {}) {
   const videoRef = useRef();
 
   const [expression, setExpression] = useState("Loading...");
 
   //   init();
+
+  const handleClick = () => {
+    const expression = init(setExpression, videoRef);
+    onClick(expression);
+  };
+
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen px-12 text-white bg-black">
@@ -25,7 +31,8 @@ export default function FaceExpression() {
           <button
             className="py-1.5 border w-full rounded active:scale-95 duration-150 font-light"
             onClick={() => {
-              init(setExpression, videoRef);
+              
+              handleClick()
             }}
           >
             Detect Expression

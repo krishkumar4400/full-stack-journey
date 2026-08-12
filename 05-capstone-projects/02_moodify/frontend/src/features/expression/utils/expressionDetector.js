@@ -18,23 +18,23 @@ export function detectExpression(blendshapes) {
 
   // 😊 Happy
   if (smile > 0.65) {
-    return "😊 Happy";
+    return "happy";
   }
 
   // 😮 Surprise
   if (jawOpen > 0.05 && browUp > 0.05 && eyeWide > 0.05) {
-    return "😮 Surprise";
+    return "surprised";
   }
 
   // 😠 Angry
   if (browDown > 0.05 && mouthPress > 0.05) {
-    return "😠 Angry";
+    return "angry";
   }
 
   // 😢 Sad
   if (mouthFrown > 0.01 && browUp > 0.01) {
-    return "😢 Sad";
+    return "sad";
   }
 
-  return "😐 Neutral";
+  return "normal";
 }
