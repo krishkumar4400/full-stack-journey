@@ -73,7 +73,7 @@ function Counter() {
                 }
                 setInput("");
               }}
-              className="border-1 px-8 py-2 font-light rounded-md bg-slate-950"
+              className="border px-8 py-2 font-light rounded-md bg-slate-950"
             >
               Set to {input}
             </button>

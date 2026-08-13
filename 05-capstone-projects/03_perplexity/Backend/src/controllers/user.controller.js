@@ -225,7 +225,7 @@ export async function loginController(req, res) {
 export async function getMe(req, res) {
   try {
     const userId = req.userId;
-    const user = await userModel.findById(userId);
+    const user = await userModel.findById(userId).select("-password");
     console.log(user);
     return res.status(200).json({
       success: true,
@@ -239,7 +239,6 @@ export async function getMe(req, res) {
     });
   }
 }
-
 
 export async function logoutController(req, res) {
   try {

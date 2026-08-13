@@ -2,7 +2,7 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import userRouter from './routes/user.routes.js';
 
-const app =express();
+const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
@@ -16,12 +16,12 @@ app.get('/', (req,res) => {
 
 /**
  * @route POST /api/auth/register
- * @desc Register a new user
+ * @desc auth routes
  * @access Public
- * @body {username, email, password}
+ * @body {user}
  * @returns {user: {id, username, email}, token}
  */
 
-app.use('/api/user', userRouter);
+app.use('/api/v1/user', userRouter);
 
 export default app;
