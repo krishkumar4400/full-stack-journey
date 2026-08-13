@@ -14,7 +14,7 @@ io.on("connection", (socket) => {
     console.log("user fired message event");
     console.log(m);
     
-    io.emit("abc")
+    io.emit("abc", m);
   });
 
 });
@@ -25,3 +25,12 @@ httpServer.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 // WARNING !!! app.listen(3000); will not work here, as it creates a new HTTP server
+
+
+/**
+ * Tasks
+ * 
+ * - socket.emit()
+ * - socker.broadcast.emit()
+ * - io.emit()
+ */
