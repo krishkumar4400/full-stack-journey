@@ -1,0 +1,23 @@
+{
+  "name": "day-16-gen-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@langchain/core": "^1.2.7",
+    "@langchain/mistralai": "^1.2.0",
+    "dotenv": "^17.4.2",
+    "langchain": "^1.5.8",
+    "nodemailer": "^9.0.5",
+    "zod": "^4.4.3"
+  }
+}

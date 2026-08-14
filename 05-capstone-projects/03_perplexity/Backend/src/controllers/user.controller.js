@@ -50,13 +50,16 @@ export async function registerController(req, res) {
                 <p>Hi ${username},</p>
                 <p>Thank you for registering at <strong>Perplexity</strong>. We're excited to have you on board!</p>
                 <p>Please verify your email address by clicking the link below</p>
-                <a href="http://localhost:3000/api/user/verify-email?token=${emailVerificationToken}">Verify Email</a>
+                <a href="http://localhost:3000/api/v1/user/verify-email?token=${emailVerificationToken}">Verify Email</a>
                 <p>If you did not create an account, please ignore this email.</p>
                 <p>Best regards,<br>The Perplexity Team</p>
         `,
     });
 
-    return res.json({
+    return res.status(201).json({
+      message: "user registered successfully",
+      success: true,
+      status: "success",
       user,
     });
   } catch (error) {
@@ -133,7 +136,7 @@ export async function resendEmail(req, res) {
                 <p>Hi ${username},</p>
                 <p>Thank you for registering at <strong>Perplexity</strong>. We're excited to have you on board!</p>
                 <p>Please verify your email address by clicking the link below</p>
-                <a href="http://localhost:3000/api/user/verify-email?token=${emailVerificationToken}">Verify Email</a>
+                <a href="http://localhost:3000/api/v1/user/verify-email?token=${emailVerificationToken}">Verify Email</a>
                 <p>If you did not create an account, please ignore this email.</p>
                 <p>Best regards,<br>The Perplexity Team</p>
         `,

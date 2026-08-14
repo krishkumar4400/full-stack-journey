@@ -1,16 +1,14 @@
-import 'dotenv/config';
+import "dotenv/config";
 import app from "./src/app.js";
 import connectToDB from "./src/config/database.js";
-import { testAI } from './src/services/ai.service.js';
+import { testAI } from "./src/services/ai.service.js";
 
-testAI();
+// testAI();
 
-
-
-// await connectToDB();
+await connectToDB();
 
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`); 
+  console.log(`Server is running on http://localhost:${port}`);
 });
