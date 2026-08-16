@@ -1,0 +1,5 @@
+*.html
+*.zip
+node_modules
+.env
+*.txt
