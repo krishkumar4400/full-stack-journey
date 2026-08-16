@@ -1,9 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: express-ingress
+  name: express-app-ingress
   labels:
-    app.kubernetes.io/name: express-ingress
+    app.kubernetes.io/name: express-app-ingress
 spec:
   ingressClassName: nginx
   rules:
@@ -13,6 +13,6 @@ spec:
             path: "/"
             backend:
               service:
-                name: express-service
+                name: main-server-service
                 port:
-                  number: 4000
+                  number: 80

@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: express-service
+  name: main-server-service
 spec:
   selector:
     app: main-server
