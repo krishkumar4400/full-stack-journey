@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
+import { useSelector } from "react-redux";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -15,6 +16,9 @@ const Register = () => {
 
   const { handleRegister } = useAuth();
 
+  const user = useSelector((state) => state.auth.user);
+  const loading = useSelector((state) => state.auth.loading);
+
   const submitHandler = async (e) => {
     e.preventDefault();
     console.log({
@@ -25,6 +29,10 @@ const Register = () => {
     const data = await handleRegister({ name, email, password });
     console.log(data);
   };
+
+  if (!loading && user) {
+    return <Navigate to={"/"} replace />;
+  }
 
   return (
     <div className="min-h-screen bg-linear-to-br from-purple-900 via-purple-800 to-indigo-900 flex items-center justify-center p-4">

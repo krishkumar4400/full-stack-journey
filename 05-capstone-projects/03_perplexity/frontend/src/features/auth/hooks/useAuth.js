@@ -36,6 +36,7 @@ const useAuth = () => {
     try {
       dispatch(setLoading(true));
       const data = await getUser();
+      // console.log(data)
       dispatch(setUser(data.user));
     } catch (error) {
       console.log(error);

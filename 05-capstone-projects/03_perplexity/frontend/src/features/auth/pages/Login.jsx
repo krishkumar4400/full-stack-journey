@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth.js";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,12 +12,19 @@ const Login = () => {
 
   const { handleLogin } = useAuth();
 
+  const user = useSelector((state) => state.auth.user);
+  const loading = useSelector((state) => state.auth.loading);
+
   const submitHandler = async (e) => {
     e.preventDefault();
     const data = await handleLogin({ email, password });
     console.log(data);
-    // navigate("/");
+    navigate("/");
   };
+
+  if (!loading && user) {
+    return <Navigate to={"/"} replace />;
+  }
 
   return (
     <div className="min-h-screen bg-linear-to-br from-purple-900 via-purple-800 to-indigo-900 flex items-center justify-center p-4">

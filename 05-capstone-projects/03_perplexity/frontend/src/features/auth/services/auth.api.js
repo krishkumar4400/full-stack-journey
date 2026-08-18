@@ -45,7 +45,8 @@ async function logout() {
 
 async function getUser() {
   try {
-    const { data } = await api.get("/user");
+    const { data } = await api.get("/me");
+      // console.log(data);
 
     return data;
   } catch (error) {
