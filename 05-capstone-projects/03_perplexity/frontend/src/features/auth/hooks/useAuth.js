@@ -1,19 +1,57 @@
-import { useContext } from "react";
-import { register } from "../services/auth.api.js";
-import AuthContext from "../context/auth.context.jsx";
+import { useDispatch } from "react-redux";
+import { register, login, logout, getUser } from "../services/auth.api.js";
+import { setUser, setLoading, setError } from "../auth.slice.js";
 
 const useAuth = () => {
-  const { user, setUser, loading, setLoading } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const handleRegister = async ({ name, email, password }) => {
     try {
-      setLoading(true);
+      dispatch(setLoading(true));
       const data = await register({ name, email, password });
-      setUser(data.user);
+      return data;
     } catch (error) {
       console.log(error);
+      dispatch(setError(error.response?.data.message || "Registration Failed"));
     } finally {
-      setLoading(false);
+      dispatch(setLoading(false));
     }
   };
+
+  const handleLogin = async ({ email, password }) => {
+    try {
+      dispatch(setLoading(true));
+      const data = await login({ email, password });
+      dispatch(setUser(data.user));
+      return data;
+    } catch (error) {
+      console.log(error);
+      dispatch(setError(error.response?.data.message || "Login Failed"));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
+  const handleGetUser = async () => {
+    try {
+      dispatch(setLoading(true));
+      const data = await getUser();
+      dispatch(setUser(data.user));
+    } catch (error) {
+      console.log(error);
+      dispatch(
+        setError(error.response?.data.message || "Failed to fetch user"),
+      );
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
+  return {
+    handleGetUser,
+    handleLogin,
+    handleRegister,
+  };
 };
+
+export default useAuth;

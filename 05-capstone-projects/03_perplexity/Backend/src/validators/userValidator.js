@@ -2,6 +2,7 @@ import { body, validationResult } from "express-validator";
 
 function validate(req, res, next) {
   const errors = validationResult(req);
+  console.log(errors.array());
   if (!errors.isEmpty()) {
     return res.status(400).json({
       errors: errors.array(),
@@ -16,9 +17,9 @@ export const registerValidator = [
     .trim()
     .isLength({ min: 3 })
     .notEmpty()
-    .withMessage("Please enter a valid username")
-    .matches(/^[a-zA-Z0-9_]+$/)
-    .withMessage("Username can only contain letters, numbers, and underscore"),
+    .withMessage("Please enter a valid username"),
+  // .matches(/^[a-zA-Z0-9_]+$/)
+  // .withMessage("Username can only contain letters, numbers, and underscore"),
   body("email")
     .notEmpty()
     .withMessage("Email is required")
@@ -27,25 +28,25 @@ export const registerValidator = [
     .isEmail()
     .withMessage("Please provide a valid email"),
   body("password")
-    .isStrongPassword({
-      minLength: 6,
-      minNumbers: 1,
-      minUppercase: 1,
-    })
+    // .isStrongPassword({
+    //   minLength: 6,
+    //   minNumbers: 1,
+    //   minUppercase: 1,
+    // })
     .trim()
     .notEmpty()
     .withMessage("Password is required")
     .isLength({ min: 6 })
     .withMessage("Password must be at least 6 characters"),
-  body("confirmPassword")
-    .notEmpty()
-    .withMessage("Confirm password is required")
-    .custom((value, { req }) => {
-      if (value !== req.body.password) {
-        throw new Error("Passwords do not match");
-      }
-      return true;
-    }),
+  // body("confirmPassword")
+  //   .notEmpty()
+  //   .withMessage("Confirm password is required")
+  //   .custom((value, { req }) => {
+  //     if (value !== req.body.password) {
+  //       throw new Error("Passwords do not match");
+  //     }
+  // return true;
+  // }),
   validate,
 ];
 
@@ -58,11 +59,11 @@ export const loginValidator = [
     .withMessage("Please provide a valid email")
     .normalizeEmail(),
   body("password")
-    .isStrongPassword({
-      minLength: 6,
-      minNumbers: 1,
-      minUppercase: 1,
-    })
+    // .isStrongPassword({
+    //   minLength: 6,
+    //   minNumbers: 1,
+    //   minUppercase: 1,
+    // })
     .trim()
     .notEmpty()
     .withMessage("Password is required")

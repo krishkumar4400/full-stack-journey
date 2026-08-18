@@ -208,6 +208,7 @@ export async function loginController(req, res) {
     return res.status(200).json({
       message: "Login successful",
       success: true,
+      user
     });
   } catch (error) {
     console.error(error);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import useAuth from "../hooks/useAuth";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -10,10 +11,20 @@ const Register = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
 
-    const submitHandler = (e) => {
-      e.preventDefault();
-    };
+  const navigate = useNavigate();
 
+  const { handleRegister } = useAuth();
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    console.log({
+      name,
+      email,
+      password,
+    });
+    const data = await handleRegister({ name, email, password });
+    console.log(data);
+  };
 
   return (
     <div className="min-h-screen bg-linear-to-br from-purple-900 via-purple-800 to-indigo-900 flex items-center justify-center p-4">

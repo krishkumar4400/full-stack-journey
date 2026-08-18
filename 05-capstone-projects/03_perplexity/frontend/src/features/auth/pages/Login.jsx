@@ -1,14 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
+import useAuth from "../hooks/useAuth.js";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const submitHandler = (e) => {
+  const navigate = useNavigate();
+
+  const { handleLogin } = useAuth();
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-  }
+    const data = await handleLogin({ email, password });
+    console.log(data);
+    // navigate("/");
+  };
 
   return (
     <div className="min-h-screen bg-linear-to-br from-purple-900 via-purple-800 to-indigo-900 flex items-center justify-center p-4">

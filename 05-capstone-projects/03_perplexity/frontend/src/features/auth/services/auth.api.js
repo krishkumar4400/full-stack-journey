@@ -12,10 +12,11 @@ async function register({ name, email, password }) {
       email,
       password,
     });
+    console.log(data);
 
     return data;
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
 
