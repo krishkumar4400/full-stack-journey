@@ -1,7 +1,6 @@
 import userModel from "../Models/User.Model.js";
 import { sendMail } from "../services/mail.service.js";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
 
 /** @type {import("express").RequestHandler} */
 
@@ -208,7 +207,7 @@ export async function loginController(req, res) {
     return res.status(200).json({
       message: "Login successful",
       success: true,
-      user
+      user,
     });
   } catch (error) {
     console.error(error);
