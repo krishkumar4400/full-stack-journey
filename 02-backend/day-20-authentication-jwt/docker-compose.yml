@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: jwt_postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: krishkkumar
+      POSTGRES_PASSWORD: krish12345
+      POSTGRES_DB: jwtdb

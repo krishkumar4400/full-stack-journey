@@ -1,0 +1,23 @@
+{
+  "name": "orm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "drizzle.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.4",
+    "drizzle-orm": "^0.43.1",
+    "pg": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.2.3",
+    "drizzle-kit": "^0.31.9"
+  }
+}

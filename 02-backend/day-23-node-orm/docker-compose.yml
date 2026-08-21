@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:17.4
+    ports:
+      - 5432:5432
+    environment: #credentials
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: mydb
+
+
+# docker compose up
+# docker compose up -d
+# cat docker-compose.yml
