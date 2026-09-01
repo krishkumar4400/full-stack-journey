@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 
 // Health Check
 app.get("/", (req, res) => {
-  res.send("Server is running");
+  return res.status(200).json({ message: "Server is running" });
 });
 
 /**

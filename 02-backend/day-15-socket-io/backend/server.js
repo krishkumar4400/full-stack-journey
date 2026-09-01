@@ -13,10 +13,9 @@ io.on("connection", (socket) => {
   socket.on("message", (m) => {
     console.log("user fired message event");
     console.log(m);
-    
+
     io.emit("abc", m);
   });
-
 });
 
 const port = process.env.PORT || 4000;

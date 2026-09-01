@@ -39,6 +39,6 @@ while (true) {
   messages.push(new HumanMessage(userInput));
   const response = await agent.invoke({ messages });
   messages.push(response.messages[response.messages.length - 1]);
-//   console.log(response);
+  //   console.log(response);
   console.log(response.messages[response.messages.length - 1].content);
 }
