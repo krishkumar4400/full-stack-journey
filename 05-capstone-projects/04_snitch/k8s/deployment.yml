@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: Enter deployment name
 spec:
-  replicas: Enter the number of replicas
+  replicas: 3
   template:
     metadata:
       labels:

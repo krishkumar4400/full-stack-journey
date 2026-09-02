@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app:  Selector Label
-  type:  LoadBalancer | ClusterIP | NodePort
+  type: ClusterIP
   ports:
   - name:  name-of-the-port
     port:  80
