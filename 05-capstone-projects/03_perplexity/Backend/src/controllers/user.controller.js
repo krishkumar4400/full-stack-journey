@@ -229,7 +229,7 @@ export async function getMe(req, res) {
   try {
     const userId = req.userId;
     const user = await userModel.findById(userId).select("-password");
-    console.log(user);
+    // console.log(user);
     return res.status(200).json({
       success: true,
       user,

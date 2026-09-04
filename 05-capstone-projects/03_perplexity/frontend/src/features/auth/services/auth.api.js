@@ -27,6 +27,8 @@ async function login({ email, password }) {
       password,
     });
 
+    console.log("in api");
+    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -46,7 +48,7 @@ async function logout() {
 async function getUser() {
   try {
     const { data } = await api.get("/me");
-      // console.log(data);
+    // console.log(data);
 
     return data;
   } catch (error) {
