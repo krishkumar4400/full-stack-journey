@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { sendMessage } from "../controllers/chat.controller.js";
+import {
+  deleteChatById,
+  getChatMessages,
+  getUserChats,
+  sendMessage,
+} from "../controllers/chat.controller.js";
 import {
   authenticationMiddleware,
   isAuthenticated,
@@ -12,6 +17,22 @@ chatRouter.post(
   authenticationMiddleware,
   isAuthenticated,
   sendMessage,
+);
+
+chatRouter.get("/", authenticationMiddleware, isAuthenticated, getUserChats);
+
+chatRouter.get(
+  "/:chatId/messages",
+  authenticationMiddleware,
+  isAuthenticated,
+  getChatMessages,
+);
+
+chatRouter.delete(
+  "/:chatId",
+  authenticationMiddleware,
+  isAuthenticated,
+  deleteChatById,
 );
 
 export default chatRouter;

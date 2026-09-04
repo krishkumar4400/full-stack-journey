@@ -13,7 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@langchain/core": "^1.2.9",
+    "@langchain/google": "^0.2.4",
     "@langchain/google-genai": "^2.2.0",
+    "@langchain/mistralai": "^1.2.0",
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
