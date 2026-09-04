@@ -1,8 +1,9 @@
 import cookieParser from "cookie-parser";
 import express from "express";
-import userRouter from "./routes/user.routes.js";
 import cors from "cors";
 import morgan from "morgan";
+import userRouter from "./routes/user.routes.js";
+import chatRouter from "./routes/chat.routes.js";
 
 const app = express();
 
@@ -31,5 +32,6 @@ app.get("/", (req, res) => {
  */
 
 app.use("/api/v1/auth", userRouter);
+app.use("/api/v1/chats", chatRouter);
 
 export default app;
