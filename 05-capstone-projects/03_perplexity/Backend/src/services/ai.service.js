@@ -1,8 +1,12 @@
 import { initChatModel } from "langchain";
+import { HumanMessage } from "langchain";
 
 const model = await initChatModel("google-genai:gemini-3.6-flash");
 
-export const testAI = async () => {
-  const response = await model.invoke("Why do parrots talk?");
-  console.log(response.text);
+const generateResponse = async (message) => {
+  const response = await model.invoke([new HumanMessage(message)]);
+
+  return response.text;
 };
+
+export default generateResponse;
