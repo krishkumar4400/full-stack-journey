@@ -14,11 +14,21 @@ const starterMessages = [
   {
     id: 1,
     role: "user",
-    content: "What does quiet technology look like in everyday life?",
+    content: "Hey",
   },
   {
     id: 2,
-    role: "assistant",
+    role: "ai",
+    content: "Hello, How can I assist you today ?",
+  },
+  {
+    id: 3,
+    role: "user",
+    content: "What does quiet technology look like in everyday life?",
+  },
+  {
+    id: 4,
+    role: "ai",
     content:
       "Quiet technology is designed to support your attention rather than compete for it. It stays available when you need it, fades into the background when you do not, and makes its value felt through small, considered moments.\n\nThink of a lamp that adjusts to the room without an app, or a calendar that protects your focus instead of filling every gap. The best version of technology gives you more presence, not more notifications.",
   },
@@ -62,7 +72,7 @@ const Dashboard = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#0b0c0e] text-[#f3f0e8] selection:bg-[#d5f36b] selection:text-[#13150f]">
+    <main className="min-h-screen bg-[#030303] text-[#ffffff] selection:bg-[#5eff00] selection:text-[#020202]">
       <div className="mx-auto flex min-h-screen w-full max-w-[1600px] overflow-hidden border-x border-[#25272a] bg-[#101113]">
         <aside
           className={`fixed inset-y-0 left-0 z-20 flex w-71 -translate-x-full flex-col border-r border-[#2a2c2f] bg-[#101113] p-5 transition-transform duration-300 lg:relative lg:translate-x-0 ${isSidebarOpen ? "translate-x-0" : ""}`}
@@ -241,7 +251,7 @@ const Dashboard = () => {
                       )}
                     </div>
                     <div
-                      className={`whitespace-pre-line text-[15px] leading-7 ${chatMessage.role === "user" ? "rounded-2xl rounded-tr-sm bg-[#242725] px-5 py-4 text-[#eeeae0]" : "text-[#c2c5bc]"}`}
+                      className={`whitespace-pre-line text-[15px] leading-7 ${chatMessage.role === "user" ? "rounded-2xl rounded-tr-sm bg-[#1c1e1d] px-5 py-3 text-[#eeeae0]" : "text-[#c2c5bc]"}`}
                     >
                       {chatMessage.content}
                     </div>
@@ -253,7 +263,7 @@ const Dashboard = () => {
               onSubmit={handleSubmit}
               className="sticky bottom-0 mt-auto border-t border-[#2a2c2f] bg-[#101113] pt-5"
             >
-              <div className="flex items-end gap-3 rounded-xl border border-[#363936] bg-[#171918] p-3 transition-colors focus-within:border-[#858e61]">
+              <div className="flex fixed bottom-0 w-100 items-end gap-3 rounded-xl border border-[#363936] bg-[#171918] p-3 transition-colors focus-within:border-[#858e61]">
                 <textarea
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}
