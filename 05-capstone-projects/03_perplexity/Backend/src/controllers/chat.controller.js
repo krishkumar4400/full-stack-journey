@@ -22,7 +22,7 @@ const sendMessage = async (req, res) => {
       role: "user",
     });
 
-    const messages = messageModel.find({ chatId: chat._id });
+    const messages = messageModel.find({ chatId: chat._id || chatId });
     console.log(messages);
 
     const aiResponse = await generateResponse(messages);
