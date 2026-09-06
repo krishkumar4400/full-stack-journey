@@ -42,6 +42,9 @@ const Dashboard = () => {
   const [messages, setMessages] = useState(starterMessages);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const chats = useSelector((state) => state.chat.chats);
+  const currentChatId = useSelector((state) => state.chat.currentChatId);
+
   const activeTitle = useMemo(
     () =>
       starterChats.find((item) => item.id === activeChat)?.title ??
@@ -57,6 +60,7 @@ const Dashboard = () => {
     event.preventDefault();
     const trimmedMessage = message.trim();
     if (!trimmedMessage) return;
+    chat.handleSendMessage({ message: trimmedMessage, chatId: currentChatId });
     setMessages((currentMessages) => [
       ...currentMessages,
       { id: Date.now(), role: "user", content: trimmedMessage },
@@ -229,7 +233,7 @@ const Dashboard = () => {
                   </div>
                 </div>
               ) : (
-                messages.map((chatMessage) => (
+                chats[currentChatId]?.messages.map((chatMessage) => (
                   <article
                     key={chatMessage.id}
                     className={

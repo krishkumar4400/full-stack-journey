@@ -11,6 +11,8 @@ import {
   setCurrentChatId,
   setError,
   setIsLoading,
+  createNewChat,
+  addNewMessage,
 } from "../chat.slice.js";
 
 export const useChat = () => {
@@ -21,22 +23,38 @@ export const useChat = () => {
     const data = await sendMessage({ message, chatId });
     const { chat, aiMessage } = data;
     dispatch(
-      setChats((prev) => {
-        return {
-          ...prev,
-          [chat._id]: {
-            ...chat,
-            messages: [{ content: message, role: "user" }, aiMessage],
-          },
-        };
+      createNewChat({
+        chatId: chat._id,
+        title: chat.title,
       }),
     );
+    dispatch(
+      addNewMessage({ chatId: chat._id, content: message, role: "user" }),
+    );
+    dispatch(
+      addNewMessage({
+        chatId: chat._id,
+        content: aiMessage.content,
+        role: aiMessage.role,
+      }),
+    );
+    // dispatch(
+    //   setChats((prev) => {
+    //     return {
+    //       ...prev,
+    //       [chat._id]: {
+    //         ...chat,
+    //         messages: [{ content: message, role: "user" }, aiMessage],
+    //       },
+    //     };
+    //   }),
+    // );
 
     dispatch(setCurrentChatId(chat._id));
   }
 
   return {
     initializeSocketConnection,
-    handleSendMessage
+    handleSendMessage,
   };
 };

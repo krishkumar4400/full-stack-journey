@@ -22,12 +22,12 @@ const sendMessage = async (req, res) => {
       role: "user",
     });
 
-    const messages = messageModel.find({ chatId: chat._id || chatId });
+    const messages = await messageModel.find({ chatId: chat._id || chatId });
     console.log(messages);
 
     const aiResponse = await generateResponse(messages);
 
-    const aiMessage = messageModel.create({
+    const aiMessage = await messageModel.create({
       chatId: chat._id,
       content: aiResponse,
       role: "ai",
@@ -36,7 +36,7 @@ const sendMessage = async (req, res) => {
     return res.status(201).json({
       title: chatTitle,
       chat,
-      message: aiMessage,
+      aiMessage,
     });
   } catch (error) {
     console.error(error);
