@@ -39,18 +39,6 @@ export const useChat = () => {
         role: aiMessage.role,
       }),
     );
-    // dispatch(
-    //   setChats((prev) => {
-    //     return {
-    //       ...prev,
-    //       [chat._id]: {
-    //         ...chat,
-    //         messages: [{ content: message, role: "user" }, aiMessage],
-    //       },
-    //     };
-    //   }),
-    // );
-
     dispatch(setCurrentChatId(chat._id));
   }
 
@@ -64,7 +52,7 @@ export const useChat = () => {
           acc[chat._id] = {
             id: chat._id,
             title: chat.title,
-            message: [],
+            messages: [],
             lastUpdated: chat.updatedAt,
           };
           return acc;

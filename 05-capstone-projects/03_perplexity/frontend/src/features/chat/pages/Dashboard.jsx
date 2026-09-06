@@ -2,56 +2,21 @@ import { useEffect, useMemo, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { useSelector } from "react-redux";
 import { useChat } from "../hooks/useChat.js";
-
-const starterChats = [
-  { id: 1, title: "The future of quiet technology", time: "Now" },
-  { id: 2, title: "Best cities for a creative sabbatical", time: "Yesterday" },
-  { id: 3, title: "How do solar panels work?", time: "Yesterday" },
-  { id: 4, title: "A simple guide to stoicism", time: "Jun 18" },
-  { id: 5, title: "Recipes for a rainy Sunday", time: "Jun 16" },
-];
-
-const starterMessages = [
-  {
-    id: 1,
-    role: "user",
-    content: "Hey",
-  },
-  {
-    id: 2,
-    role: "ai",
-    content: "Hello, How can I assist you today ?",
-  },
-  {
-    id: 3,
-    role: "user",
-    content: "What does quiet technology look like in everyday life?",
-  },
-  {
-    id: 4,
-    role: "ai",
-    content:
-      "Quiet technology is designed to support your attention rather than compete for it. It stays available when you need it, fades into the background when you do not, and makes its value felt through small, considered moments.\n\nThink of a lamp that adjusts to the room without an app, or a calendar that protects your focus instead of filling every gap. The best version of technology gives you more presence, not more notifications.",
-  },
-];
+import { setCurrentChatId } from "../chat.slice.js";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => state.auth);
   const chat = useChat();
-  const [activeChat, setActiveChat] = useState(starterChats[0].id);
+
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState(starterMessages);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const chats = useSelector((state) => state.chat.chats);
   const currentChatId = useSelector((state) => state.chat.currentChatId);
+  const currentChat = chats[currentChatId];
+  const messages = currentChat?.messages ?? [];
 
-  const activeTitle = useMemo(
-    () =>
-      starterChats.find((item) => item.id === activeChat)?.title ??
-      "New conversation",
-    [activeChat],
-  );
+  const activeTitle = chats[currentChatId]?.title ?? "New conversation";
 
   useEffect(() => {
     chat.initializeSocketConnection();
@@ -62,11 +27,11 @@ const Dashboard = () => {
     event.preventDefault();
     const trimmedMessage = message.trim();
     if (!trimmedMessage) return;
-    chat.handleSendMessage({ message: trimmedMessage, chatId: currentChatId });
-    setMessages((currentMessages) => [
-      ...currentMessages,
-      { id: Date.now(), role: "user", content: trimmedMessage },
-    ]);
+    chat.handleSendMessage({
+      message: trimmedMessage,
+      chatId: currentChatId,
+    });
+
     setMessage("");
   };
 
@@ -75,8 +40,7 @@ const Dashboard = () => {
   };
 
   const handleNewChat = () => {
-    setActiveChat(null);
-    setMessages([]);
+    dispatch(setCurrentChatId(null));
     setMessage("");
     setIsSidebarOpen(false);
   };
@@ -135,12 +99,10 @@ const Dashboard = () => {
                 type="button"
                 key={chatItem.id}
                 onClick={() => {
-                  setActiveChat(chatItem.id);
-                  setMessages(chatItem.id === 1 ? starterMessages : []);
                   setIsSidebarOpen(false);
                   openChat(chatItem.id);
                 }}
-                className={`group cursor-pointer w-full border-l-2 px-3 py-3 text-left transition-colors ${activeChat === chatItem.id ? "border-[#d5f36b] bg-[#191b1b] text-[#f3f0e8]" : "border-transparent text-[#8e928b] hover:bg-[#17191a] hover:text-[#e2e2d9]"}`}
+                className={`group cursor-pointer w-full border-l-2 px-3 py-3 text-left transition-colors ${currentChatId === chatItem.id ? "border-[#d5f36b] bg-[#191b1b] text-[#f3f0e8]" : "border-transparent text-[#8e928b] hover:bg-[#17191a] hover:text-[#e2e2d9]"}`}
               >
                 <span className="block truncate text-sm leading-5">
                   {chatItem.title}
@@ -210,7 +172,7 @@ const Dashboard = () => {
             <div className="mb-10 flex items-start justify-between gap-4">
               <div>
                 <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#7d8279]">
-                  Conversation {activeChat ? `0${activeChat}` : "new"}
+                  Conversation {currentChatId ? `0${currentChatId}` : "new"}
                 </p>
                 <h1 className="font-display max-w-xl text-3xl leading-tight tracking-[-0.04em] text-[#f3f0e8] sm:text-4xl">
                   {activeTitle}
