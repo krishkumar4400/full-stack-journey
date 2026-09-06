@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import { useSelector } from "react-redux";
 import { useChat } from "../hooks/useChat.js";
 
@@ -54,6 +55,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     chat.initializeSocketConnection();
+    chat.handleGetChats();
   }, []);
 
   const handleSubmit = (event) => {
@@ -66,6 +68,10 @@ const Dashboard = () => {
       { id: Date.now(), role: "user", content: trimmedMessage },
     ]);
     setMessage("");
+  };
+
+  const openChat = (chatId) => {
+    chat.handleOpenChat(chatId);
   };
 
   const handleNewChat = () => {
@@ -124,7 +130,7 @@ const Dashboard = () => {
             </button>
           </div>
           <nav className="mt-3 space-y-1">
-            {starterChats.map((chatItem) => (
+            {Object.values(chats).map((chatItem) => (
               <button
                 type="button"
                 key={chatItem.id}
@@ -132,8 +138,9 @@ const Dashboard = () => {
                   setActiveChat(chatItem.id);
                   setMessages(chatItem.id === 1 ? starterMessages : []);
                   setIsSidebarOpen(false);
+                  openChat(chatItem.id);
                 }}
-                className={`group w-full border-l-2 px-3 py-3 text-left transition-colors ${activeChat === chatItem.id ? "border-[#d5f36b] bg-[#191b1b] text-[#f3f0e8]" : "border-transparent text-[#8e928b] hover:bg-[#17191a] hover:text-[#e2e2d9]"}`}
+                className={`group cursor-pointer w-full border-l-2 px-3 py-3 text-left transition-colors ${activeChat === chatItem.id ? "border-[#d5f36b] bg-[#191b1b] text-[#f3f0e8]" : "border-transparent text-[#8e928b] hover:bg-[#17191a] hover:text-[#e2e2d9]"}`}
               >
                 <span className="block truncate text-sm leading-5">
                   {chatItem.title}
@@ -248,16 +255,84 @@ const Dashboard = () => {
                       <span>
                         {chatMessage.role === "user" ? "You" : "Perplexity"}
                       </span>
-                      {chatMessage.role === "assistant" && (
+                      {chatMessage.role !== "user" && (
                         <span className="text-[#596052]">
                           · sourced response
                         </span>
                       )}
                     </div>
                     <div
-                      className={`whitespace-pre-line text-[15px] leading-7 ${chatMessage.role === "user" ? "rounded-2xl rounded-tr-sm bg-[#1c1e1d] px-5 py-3 text-[#eeeae0]" : "text-[#c2c5bc]"}`}
+                      className={`text-[15px] leading-7 ${chatMessage.role === "user" ? "whitespace-pre-line rounded-2xl rounded-tr-sm bg-[#1c1e1d] px-5 py-3 text-[#eeeae0]" : "text-[#c2c5bc]"}`}
                     >
-                      {chatMessage.content}
+                      {chatMessage.role === "user" ? (
+                        chatMessage.content
+                      ) : (
+                        <ReactMarkdown
+                          components={{
+                            h1: ({ node, ...props }) => (
+                              <h1
+                                className="mb-4 mt-6 text-2xl font-semibold text-[#f3f0e8] first:mt-0"
+                                {...props}
+                              />
+                            ),
+                            h2: ({ node, ...props }) => (
+                              <h2
+                                className="mb-3 mt-5 text-xl font-semibold text-[#f3f0e8] first:mt-0"
+                                {...props}
+                              />
+                            ),
+                            h3: ({ node, ...props }) => (
+                              <h3
+                                className="mb-2 mt-4 text-lg font-semibold text-[#f3f0e8] first:mt-0"
+                                {...props}
+                              />
+                            ),
+                            p: ({ node, ...props }) => (
+                              <p className="mb-4 last:mb-0" {...props} />
+                            ),
+                            ul: ({ node, ...props }) => (
+                              <ul
+                                className="mb-4 list-disc space-y-1 pl-6 last:mb-0"
+                                {...props}
+                              />
+                            ),
+                            ol: ({ node, ...props }) => (
+                              <ol
+                                className="mb-4 list-decimal space-y-1 pl-6 last:mb-0"
+                                {...props}
+                              />
+                            ),
+                            a: ({ node, ...props }) => (
+                              <a
+                                className="text-[#d5f36b] underline underline-offset-2 hover:text-[#efffa8]"
+                                target="_blank"
+                                rel="noreferrer"
+                                {...props}
+                              />
+                            ),
+                            code: ({ node, inline, ...props }) =>
+                              inline ? (
+                                <code
+                                  className="rounded bg-[#252a25] px-1.5 py-0.5 text-[0.9em] text-[#e8f7b4]"
+                                  {...props}
+                                />
+                              ) : (
+                                <code
+                                  className="block overflow-x-auto rounded-lg bg-[#191d1a] p-4 text-sm leading-6 text-[#e8f7b4]"
+                                  {...props}
+                                />
+                              ),
+                            blockquote: ({ node, ...props }) => (
+                              <blockquote
+                                className="mb-4 border-l-2 border-[#d5f36b] pl-4 italic text-[#aeb4a6] last:mb-0"
+                                {...props}
+                              />
+                            ),
+                          }}
+                        >
+                          {chatMessage.content}
+                        </ReactMarkdown>
+                      )}
                     </div>
                   </article>
                 ))

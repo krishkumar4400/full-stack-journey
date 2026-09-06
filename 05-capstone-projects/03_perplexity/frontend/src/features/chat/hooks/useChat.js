@@ -13,6 +13,7 @@ import {
   setIsLoading,
   createNewChat,
   addNewMessage,
+  addMessages
 } from "../chat.slice.js";
 
 export const useChat = () => {
@@ -53,8 +54,44 @@ export const useChat = () => {
     dispatch(setCurrentChatId(chat._id));
   }
 
+  const handleGetChats = async () => {
+    dispatch(setIsLoading(true));
+    const data = await getUserChats();
+    const { chats } = data;
+    dispatch(
+      setChats(
+        chats.reduce((acc, chat) => {
+          acc[chat._id] = {
+            id: chat._id,
+            title: chat.title,
+            message: [],
+            lastUpdated: chat.updatedAt,
+          };
+          return acc;
+        }, {}),
+      ),
+    );
+    dispatch(setIsLoading(false));
+  };
+
+  const handleOpenChat = async (chatId) => {
+    const data = await getChatMessages(chatId);
+    const { messages } = data;
+    const formattedMessages = messages.map(msg => ({
+      content: msg.content,
+      role: msg.role
+    }));
+    dispatch(addMessages({
+      chatId,
+      messages: formattedMessages
+    }));
+    dispatch(setCurrentChatId(chatId));
+  };
+
   return {
     initializeSocketConnection,
     handleSendMessage,
+    handleGetChats,
+    handleOpenChat,
   };
 };

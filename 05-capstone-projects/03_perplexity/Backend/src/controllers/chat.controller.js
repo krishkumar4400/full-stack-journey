@@ -17,18 +17,18 @@ const sendMessage = async (req, res) => {
     }
 
     const userMessage = await messageModel.create({
-      chatId: chatId || chat._id,
+      chatId: chatId || chat?._id,
       content: message,
       role: "user",
     });
 
-    const messages = await messageModel.find({ chatId: chat._id || chatId });
+    const messages = await messageModel.find({ chatId: chat?._id || chatId });
     console.log(messages);
 
     const aiResponse = await generateResponse(messages);
 
     const aiMessage = await messageModel.create({
-      chatId: chat._id,
+      chatId: chat?._id || chatId,
       content: aiResponse,
       role: "ai",
     });
