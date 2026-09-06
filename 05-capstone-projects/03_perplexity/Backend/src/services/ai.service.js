@@ -1,7 +1,15 @@
 import { initChatModel } from "langchain";
-import { HumanMessage, SystemMessage, AIMessage } from "langchain";
+import {
+  HumanMessage,
+  SystemMessage,
+  AIMessage,
+  tool,
+  createAgent,
+} from "langchain";
 import { ChatMistralAI } from "@langchain/mistralai";
 import { ChatGoogle } from "@langchain/google";
+import * as z from "zod";
+import searchInternet from "./internet.service.js";
 
 const mistralModel = new ChatMistralAI({
   model: "mistral-small-latest",
@@ -11,20 +19,43 @@ const mistralModel = new ChatMistralAI({
 
 const model = new ChatGoogle("gemini-3.6-flash");
 
+const searchInternetTool = tool(searchInternet, {
+  name: "search_internet",
+  description:
+    " use this tool to search the internet for relevant information to answer the user's question.",
+  schema: z.object({
+    query: z
+      .string()
+      .describe("The search query to find relevant information."),
+  }),
+});
+
 const geminiModel = await initChatModel("google-genai:gemini-3.6-flash");
 
-const generateResponse = async (messages) => {
-  const response = await geminiModel.invoke(
-    messages.map((msg) => {
-      if (msg.role === "ai") {
-        return new AIMessage(msg.content);
-      } else if (msg.role === "user") {
-        return new HumanMessage(msg.content);
-      }
-    }),
-  );
+const agent = createAgent({
+  model: geminiModel,
+  tools: [searchInternetTool],
+});
 
-  return response.text;
+const generateResponse = async (messages) => {
+  const response = await agent.invoke({
+    messages: [
+      new SystemMessage(
+        `You are a helpful assistant for answering questions.
+         If you don't know the answer, you should search the internet for relevant information to provide a helpful response. 
+         You can use the 'search_internet' tool to search the internet for relevant information. If you find relevant information, you should use it to provide a helpful response to the user's question. If you don't find relevant information, you should provide a helpful response based on your own knowledge.`,
+      ),
+      ...messages.map((msg) => {
+        if (msg.role === "ai") {
+          return new AIMessage(msg.content);
+        } else if (msg.role === "user") {
+          return new HumanMessage(msg.content);
+        }
+      }),
+    ],
+  });
+
+  return response.messages[response.messages.length - 1].text;
 };
 
 const generateChatTitle = async (message) => {
