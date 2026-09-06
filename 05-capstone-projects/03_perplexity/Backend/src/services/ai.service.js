@@ -1,4 +1,6 @@
 import { initChatModel } from "langchain";
+import {Ollama} from "@langchain/ollama";
+
 import {
   HumanMessage,
   SystemMessage,
@@ -30,10 +32,14 @@ const searchInternetTool = tool(searchInternet, {
   }),
 });
 
+const ollamaModel = new Ollama({
+  model: "llama3:latest",
+});
+
 const geminiModel = await initChatModel("google-genai:gemini-3.6-flash");
 
 const agent = createAgent({
-  model: geminiModel,
+  model: ollamaModel,
   tools: [searchInternetTool],
 });
 
@@ -59,7 +65,7 @@ const generateResponse = async (messages) => {
 };
 
 const generateChatTitle = async (message) => {
-  const response = await model.invoke([
+  const response = await ollamaModel.invoke([
     new SystemMessage(
       `You are a helpful assistant that generates concise and descriptive titles for chat conversation.
       
